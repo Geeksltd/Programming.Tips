@@ -21,14 +21,14 @@ int fileAgeInDays;
 
 <br/> Choosing names that reveal intent make it easier to understand and change code.<br/> 
 
-<strong> Avoid Disinformation </strong>
+<strong> Avoid Disinformation </strong><br/>
 
 Avoid leaving false clues that obscure the meaning of code. Of course you’d think “what?! Why do you think I would do that?”. But it’s easy to make that mistake depending on your focus and state of mind in that moment. <br/>
 When coming up with a name, step back for a second and play devil’s advocate. Think <strong> how else can this name be interpreted? </strong> <br/>
 For a moment forget about how much it makes sense to you right now. Put yourself in the shoes of someone else with no background, and think whether they can be confused by that name, thinking it might be something that you know it’s not.<br/>
 Avoid words whose entrenched meanings may vary from your intended meaning.<br/>
 
-<strong> Be considerate of human eyes </strong> 
+<strong> Be considerate of human eyes </strong> <br/>
 
 Avoid using names which vary only in small ways. How long does it take to spot the difference between:<br/>
 <ul>
@@ -47,9 +47,9 @@ Noise words are redundant. For example: </br>
    <li> How are <strong> NameString </strong> or <strong> strName </strong> or <strong> m_Name </strong> any better than simply Name? </li>
    <li> Imagine finding one class named <strong> Customer </strong> and another named <strong> CustomerObject </strong>. What would you understand as the distinction? </li> 
 </ul> <br/>
-<strong> Use Pronounceable Names </strong>
+<strong> Use Pronounceable Names </strong> <br/>
 If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. “Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?” <br/>
-This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms. <br/>
+This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms. <br/><br/> 
 <strong> Class Names </strong> <br/>
 <ul>
    <li> Classes and objects should have noun or noun phrase names like Customer, WikiPage, Account, and AddressParser. </li>
@@ -57,15 +57,16 @@ This matters because programming is a social activity. Instead of made-up words 
    <li> A class name should not be a verb, adjective or adverb. </li>
    <li> Also avoid words that are too broad like Manager, Processor, Data, or Info in the name of a class. </li>
 </ul>
-<strong> Method Names </strong>
+<strong> Method Names </strong> <br/>
 Methods should have verb or verb phrase names like Save, PostPayment, DeletePage, IsXyz, CanXyz, HasXyz. You will learn more details later. For casting in particular, you can use ToXyz or AsXyz. <br/> 
 
-<strong> Add Meaningful Context </strong> 
+<strong> Add Meaningful Context </strong> <br/>
 There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.<br/>
 
 Imagine that you have variables named firstName, lastName, street, houseNumber, city, state, and zipcode. Taken together it’s pretty clear that they form an address. But what if you just saw the <strong> state </strong> variable being used <strong> alone </strong> in a method? Would you automatically infer that it was part of an address? <br/> 
 
-You can add context by using prefixes: addressFirstName, addressLastName, addressState, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to <strong> create a class </strong> named Address. Then, even the compiler knows that the variables belong to a bigger concept. <br/> 
+You can add context by using prefixes: addressFirstName, addressLastName, addressState, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to <strong> create a class </strong> named Address. Then, even the compiler knows that the variables belong to a bigger concept. <br/> <br/>
+
 Consider the method below. Do the variables need a more meaningful context? The function name provides only part of the context; the algorithm provides the rest. Once you read through the function, you see that the three variables, number, verb, and pluralModifier, are part of the “guess statistics” message. Unfortunately, the context must be inferred. When you first look at the method, the meanings of the variables are opaque.
 <br/>
 
