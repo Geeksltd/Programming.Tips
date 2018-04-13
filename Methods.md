@@ -156,14 +156,21 @@ Think of a well-written newspaper article. You read it vertically. <br/>
 
 </ul>
 
-We would like a source file to be like a newspaper article:
-The name should be simple but explanatory. 
-The name, by itself, should be sufficient to tell us whether we are in the right module or not.
-The topmost parts of the source file should provide the high-level concepts and algorithms. 
-Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
-Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable. 
-Switch Statements vs Polymorphism 
-It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:
+<strong> We would like a source file to be like a newspaper article: </strong> <br/> 
+<ul>
+    <li>The name should be simple but explanatory. </li>
+    <li> The name, by itself, should be sufficient to tell us whether we are in the right module or not. </li>
+    <li> The topmost parts of the source file should provide the high-level concepts and algorithms. </li>
+    <li> Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     </li>
+</ul> <br/>
+
+Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable. <br/>
+
+<h3> Switch Statements vs Polymorphism </h3>
+
+It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:<br/>
+
+```
 public decimal CalculatePay()
 {     
      switch (this.EmployeeType) 
@@ -178,7 +185,7 @@ public decimal CalculatePay()
                  throw new NotSupportedException();
     }
 }
-
+```
 Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable.
 However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 IsPayday(Date date)
