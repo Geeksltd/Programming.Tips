@@ -12,15 +12,12 @@ Functions should either do something or answer something, but not both. Either y
 
 Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are: <br/>
 
-```
-public bool IsSomething() { ... }
+```public bool IsSomething() { ... }
 public bool HasSomething() { ... }
 public bool CanSomething() { ... }
 public bool ExpiresOn(...) { ... }
 public bool RelatesTo(...) { ... }
-public bool CaresFor(...) { ... }
-
-```
+public bool CaresFor(...) { ... }```
 
 Avoid command-like verbs for these. For instance avoid a Boolean method named Validate() or Submit(), etc. <br/>
 
@@ -28,8 +25,7 @@ Avoid command-like verbs for these. For instance avoid a Boolean method named Va
 
 If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something. <br/>
 
-```
-public SomeType GetSomething() { ... }
+```public SomeType GetSomething() { ... }
 public SomeType FindSomething() { ... }
 public SomeType SelectSomething() { ... }
 public double CalculateSomething() { ... }
