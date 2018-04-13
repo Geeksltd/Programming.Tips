@@ -29,11 +29,13 @@ int fileAgeInDays;
 ### Avoid Disinformation
 
 Avoid leaving false clues that obscure the meaning of code. Of course you’d think “what?! Why do you think I would do that?”. But it’s easy to make that mistake depending on your focus and state of mind in that moment. <br/>
-When coming up with a name, step back for a second and play devil’s advocate. Think <strong> how else can this name be interpreted? </strong> <br/>
-For a moment forget about how much it makes sense to you right now. Put yourself in the shoes of someone else with no background, and think whether they can be confused by that name, thinking it might be something that you know it’s not.<br/>
-Avoid words whose entrenched meanings may vary from your intended meaning.<br/>
+When coming up with a name, step back for a second and play devil’s advocate. Think:
 
-<strong> Be considerate of human eyes </strong> <br/>
+> How else can this name be interpreted?!
+
+For a moment forget about how much it makes sense to you right now. Put yourself in the shoes of someone else with no background, and think whether they can be confused by that name, thinking it might be something that you know it’s not. Avoid words whose entrenched meanings may vary from your intended meaning.
+
+### Be considerate of human eyes
 
 Avoid using names which vary only in small ways. How long does it take to spot the difference between:<br/>
 <ul>
