@@ -137,8 +137,6 @@ To say this differently, we want to be able to read the program as though it wer
    - To do B we…
    - To do C we… 
 
-
-
 Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
 
 
@@ -149,23 +147,21 @@ Learning to think this way is very important. It is the key to keeping functions
 
 Think of a well-written newspaper article. You read it vertically.
 
-  -  At the top you see a headline that will:
+    -  At the top you see a headline that will:
             - tell you what the story is about
             - allow you to decide if you want to read it.
    
-  - The first paragraph gives you a synopsis of the whole story which:
+    - The first paragraph gives you a synopsis of the whole story which:
             -  Hides all the details
             - Gives you the broad-brush concepts.
-  - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+    - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
 
 **We would like a source file to be like a newspaper article:**
 
-   - The name should be simple but explanatory.
-   - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
-   - The topmost parts of the source file should provide the high-level concepts and algorithms.
-   - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
-
-
+    - The name should be simple but explanatory.
+    - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+    - The topmost parts of the source file should provide the high-level concepts and algorithms.
+    - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
 Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
 
 
@@ -193,9 +189,9 @@ Basically it is saying that depending on the type of the employee, run a differe
 
 However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 
-  - IsPayday(Date date)
-  - DeliverPay(decimal pay)
-  - ...
+    - IsPayday(Date date)
+    - DeliverPay(decimal pay)
+    - ...
 
 Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead. 
 
