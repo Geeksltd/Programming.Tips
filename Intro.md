@@ -1,4 +1,4 @@
-## <strong> Introduction </strong><br>
+## <strong> Introduction </strong><br/>
 
 
 It’s easy to write code that makes sense to you. At the time of writing, you will be deep in an understanding of the problem you’re trying to solve. But later on, other people maintaining the code, including the future you, aren’t going to have so deep an understanding.
