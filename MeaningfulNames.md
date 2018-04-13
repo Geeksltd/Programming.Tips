@@ -1,16 +1,18 @@
 
 # <strong> Meaningful Names </strong> <br/>
 
-Names are everywhere in software. We name our variables, functions, arguments, classes, and packages. We name our source files and the directories that contain them. <br/>
+Names are everywhere in software. We name our variables, functions, arguments, classes, and packages. We name our source files and the directories that contain them.
 
 Naming is not just coming up with identifiers for things. Naming is about how we think. Naming is how we see the problem domain, and how we think about the solution. Naming is about design. It’s about creativity. It’s an art, and a science.<br/>
-Naming is the most vital activity you do as a programmer. If you learn to care and take pride in your naming skills, you will be a pro, a valuable member of society, a master. <br/>
-Choosing good names takes time but saves more than it takes. So take care with your names and change them when you find better ones. Everyone who reads your code (including you) will be happier if you do. <br/>
+Naming is the most vital activity you do as a programmer. If you learn to care and take pride in your naming skills, you will be a pro, a valuable member of society, a master.
+
+Choosing good names takes time but saves more than it takes. So take care with your names and change them when you find better ones. Everyone who reads your code (including you) will be happier if you do.
 
 ### Use Intention-Revealing Names
 Names should reveal intent. The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. <br>
 
-<i> If a name requires a comment, then the name does not reveal its intent:</i><br/>
+**If a name requires a comment, then the name does not reveal its intent:**
+
 ```c#
 int d; // elapsed time in days
 ```
