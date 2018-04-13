@@ -46,7 +46,7 @@ Of course there are cases when adding abstractions, generalising components and 
 
 The problem comes from when you think you are adding flexibility whilst in reality making your software practically more rigid and harder to change.
 
-To understand this better, you need to dive deep into the concept of Change, Predictability and the mind games that come with it.
+To understand this better, you need to dive deep into the concept of `Change`, `Predictability` and the mind games that come with it.
 
 The desire to predict the future, and preparing for it, is in our DNA. It has been vital for our survival. We do this in all aspects of our life. We are always thinking about the future. We have a burning desire to prepare for any foreseeable scenario and keep our options open. We feel safe when we cover all the bases. 
 
@@ -108,7 +108,7 @@ int Size() { }
 bool IsEmpty() { }
 ```
 
-We could have separate implementations for each method. The isEmpty method could track a boolean, while size could track a counter. Or, we can eliminate this duplication by tying isEmpty to the definition of size:
+We could have separate implementations for each method. The `isEmpty` method could track a boolean, while size could track a counter. Or, we can eliminate this duplication by tying `isEmpty` to the definition of size:
 
 ```c#
 bool IsEmpty() => 0 == Size();
@@ -132,7 +132,7 @@ public async Task Rotate(int degrees)
 }
 ```
 
-To keep this system clean, we should eliminate the small amount of duplication between the ScaleToOneDimension and Rotate methods:
+To keep this system clean, we should eliminate the small amount of duplication between the `ScaleToOneDimension` and `Rotate` methods:
 
 ```c#
 public class VacationPolicy
