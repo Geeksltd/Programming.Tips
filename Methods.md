@@ -9,6 +9,7 @@ Find the smallest piece of logic that you can give a name to. This is an art. On
 Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects. <br/>
 
 <h4> Name of Query functions (Boolean) </h4>
+
 Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are: <br/>
 
 ```
@@ -18,6 +19,7 @@ public bool CanSomething() { ... }
 public bool ExpiresOn(...) { ... }
 public bool RelatesTo(...) { ... }
 public bool CaresFor(...) { ... }
+
 ```
 
 Avoid command-like verbs for these. For instance avoid a Boolean method named Validate() or Submit(), etc. <br/>
