@@ -1,18 +1,23 @@
-## <strong> Methods (Functions) </strong> <br/>
+# Methods (Functions)
 
-<h3> Size matters </h3> <br/>
-The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible. <br/>
-In fact, you cannot directly aim for a particular size. What you can do, is to aim to break larger abstractions into smaller ones. Go for micro abstractions and turn each one into a method with a name that represents that abstraction. <br/>
-Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code. <br/>
+## Size matters
+The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
 
-<h3> Command Query Separation (CQS) Law </h3> <br/>
-Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects. <br/>
+In fact, you cannot directly aim for a particular size. What you can do, is to aim to break larger abstractions into smaller ones. Go for micro abstractions and turn each one into a method with a name that represents that abstraction. 
 
-<h4> Name of Query functions (Boolean) </h4>
+Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code. 
 
-Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are: <br/>
 
-```
+## Command Query Separation (CQS) Law
+
+Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
+
+### Name of Query functions (Boolean)
+
+Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are: 
+
+
+```c#
 public bool IsSomething() { ... }
 public bool HasSomething() { ... }
 public bool CanSomething() { ... }
@@ -22,13 +27,13 @@ public bool CaresFor(...) { ... }
 
 ```
 
-Avoid command-like verbs for these. For instance avoid a Boolean method named Validate() or Submit(), etc. <br/>
+Avoid command-like verbs for these. For instance avoid a Boolean method named Validate() or Submit(), etc.
 
-<h4> Name of Query functions (non Boolean) <h4/>
+### Name of Query functions (non Boolean)
 
-If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something. <br/>
+If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something.
 
-```
+```c#
 public SomeType GetSomething() { ... }
 public SomeType FindSomething() { ... }
 public SomeType SelectSomething() { ... }
@@ -40,36 +45,40 @@ public static SomeType CreateFrom(...) { ... }
 public string GenerateXyzReport() { ... }
 ```
 
-The key point here is that the method name should start with a verb. For example the following examples are poor choices as they don’t start with a verb: <br/>
+The key point here is that the method name should start with a verb. For example the following examples are poor choices as they don’t start with a verb:
 
-```
+
+```c#
 public Company Company() { ... }
 public void Transactions() { ... }
 public void SlowlyProcess() { ... }
 ```
 
-The last example above starts with an adverb. A better name for it would be ProcessSlowly(). <br/> 
+The last example above starts with an adverb. A better name for it would be ProcessSlowly().
 
-<h4> Name of Command functions </h4>
+### Name of Command functions
 
-Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be: <br/> 
+Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
 
-```
+```c#
 public void Archive()  { ... }
 public void RestoreToLive()  { ... }
 public async Task UpdateParent(...) { ... }
 public async Task SendToXyz(...) { ... }
 ```
 
-<strong> What should a command function return? </strong><br/>
+**What should a command function return?**
 
-Ideally command methods usually return <strong> void </strong> (or <strong> Task </strong> , in async programming). <br/> 
 
-Sometimes command methods return a <strong> Boolean </strong> value that represents success or failure of the operation. This is normally not a good practice. Instead the method should <strong> throw an exception </strong> in the case of a failure. Though, if you have a  <strong> critical performance situation </strong> where the microseconds overhead added by exceptions is not acceptable, then returning Boolean would be ok. <br/>
+Ideally command methods usually return **`void`** (or **`Task`** , in async programming). 
 
-If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named CreateDailyTimesheet() may add a new timesheet record in the database, and immediately return it. <br/>
 
-```
+Sometimes command methods return a **`Boolean`** value that represents success or failure of the operation. This is normally not a good practice. Instead the method should **throw an exception** in the case of a failure. Though, if you have a  **critical performance situation** where the microseconds overhead added by exceptions is not acceptable, then returning Boolean would be ok.
+
+
+If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named CreateDailyTimesheet() may add a new timesheet record in the database, and immediately return it.
+
+```c#
 public Timesheet CreateDailyTimesheet(Employee employee)
 {
     var result = new TimeSheet { ... };
@@ -78,99 +87,93 @@ public Timesheet CreateDailyTimesheet(Employee employee)
 }
 ```
 
-Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month! <br/>
+Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month!
 
-<h3> Micro abstractions </h3> 
-...Paymon to write <br/>
 
-<h4> Do One Thing </h4>
+## Micro abstractions
+...Paymon to write
 
-The following advice has appeared in one form or another for 30 years or more. <br/>
 
-<strong>
-    FUNCTIONS SHOULD DO ONE THING. <br/>
-    THEY SHOULD DO IT WELL. <br/>
-    THEY SHOULD DO IT ONLY. <br/>
-</strong> <br/>
+### Do One Thing
 
-But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things? <br/>
+The following advice has appeared in one form or another for 30 years or more.
 
-It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body. <br/>
 
-When we say a method should do one thing, what it really means is that it should do <strong> one thing in one level of abstraction </strong>. As part of the method body it can invoke other functions and run steps that are <strong> one level below the stated name of the function </strong>. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction. <br/>
+   **FUNCTIONS SHOULD DO ONE THING.
+    THEY SHOULD DO IT WELL.
+    THEY SHOULD DO IT ONLY.**
+
+
+But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
+
+It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body.
+
+When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other functions and run steps that are **one level below the stated name of the function**. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction.
 
 To know if a function is doing more than “one thing”  try to extract another function from one or a bunch of its statements and give it a sensible name. Then think whether this new function (concept) is:
-<ul>
-    <li>  A level of abstraction below the original method; or </li>
-    <li> At the same level as the original one, merely a restatement of its implementation. </li>
-</ul>
-<br/>
+   -  A level of abstraction below the original method; or
+   - At the same level as the original one, merely a restatement of its implementation.
 
-<strong> Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections. </strong> <br/>
-
-<h3> One Level of Abstraction per Function </h3>
-
-In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. <br/>
-
-Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function. <br/>
-
-<h4> Reading Code from Top to Bottom: The Stepdown Rule </h4> 
-Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule. <br/>
-
-To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. <br/>
-<ul>
-    <li>To do A we do B and then C. </li>
-    <li> To do B, if E we do F and otherwise we do G </li>
-    <li> To determine if E, we … </li>
-    <li> To do F we … </li>
-    <li> To do G we... </li>
-    <li> To do B we… </li>
-    <li> To do C we… </li>
-</ul> <br/> 
+**Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
 
 
-Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent. <br/>
+### One Level of Abstraction per Function
 
-<strong> Dependent methods: </strong> If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.<br/>
+In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction.
 
-<h4> The Newspaper Metaphor </h4>
+Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function.
 
-Think of a well-written newspaper article. You read it vertically. <br/>
-<ul>
-    
-<li> 
-    At the top you see a headline that will:
-    <ul>
-        <li>  tell you what the story is about </li>
-        <li> allow you to decide if you want to read it. </li>
-    </ul>
-</li>
-<li> 
-    The first paragraph gives you a synopsis of the whole story which:
-    <ul>
-        <li>  Hides all the details </li>
-        <li> Gives you the broad-brush concepts. </li>
-    </ul>
-</li>
-<li> As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+#### Reading Code from Top to Bottom: The Stepdown Rule
+Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule. 
 
-</ul>
 
-<strong> We would like a source file to be like a newspaper article: </strong> <br/> 
-<ul>
-    <li>The name should be simple but explanatory. </li>
-    <li> The name, by itself, should be sufficient to tell us whether we are in the right module or not. </li>
-    <li> The topmost parts of the source file should provide the high-level concepts and algorithms. </li>
-    <li> Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     </li>
-</ul> <br/>
+To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. 
 
-Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable. <br/>
+   - To do A we do B and then C. 
+   - To do B, if E we do F and otherwise we do G
+   - To determine if E, we …
+   - To do F we … 
+   - To do G we... 
+   - To do B we…
+   - To do C we… 
 
-<h3> Switch Statements vs Polymorphism </h3>
 
-It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:<br/>
 
-```
+Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
+
+
+**Dependent methods:** If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.
+
+
+#### The Newspaper Metaphor
+
+Think of a well-written newspaper article. You read it vertically.
+
+  -  At the top you see a headline that will:
+            - tell you what the story is about
+            - allow you to decide if you want to read it.
+   
+  - The first paragraph gives you a synopsis of the whole story which:
+            -  Hides all the details
+            - Gives you the broad-brush concepts.
+  - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+
+**We would like a source file to be like a newspaper article:**
+
+   - The name should be simple but explanatory.
+   - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+   - The topmost parts of the source file should provide the high-level concepts and algorithms.
+   - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
+
+
+Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
+
+
+### Switch Statements vs Polymorphism
+
+It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:
+
+```c#
 public decimal CalculatePay()
 {     
      switch (this.EmployeeType) 
@@ -186,31 +189,31 @@ public decimal CalculatePay()
     }
 }
 ```
-Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable. <br/> 
+Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable. 
 
-However, if you find that a switch statement on an employee’s type is being repeated, for example for: <br/>
-<ul>
-    <li> IsPayday(Date date) </li>
-    <li> DeliverPay(decimal pay) </li>
-    <li> ... </li>
-</ul> <br/> 
+However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 
-Then it’s a smell that something is missing. When you find yourself <strong> repeating switch statements on a particular type of value </strong>, you should change that to use polymorphism instead. <br/>
+  - IsPayday(Date date)
+  - DeliverPay(decimal pay)
+  - ...
 
-In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the CalculatePay(), IsPayday(), and DeliverPay() methods as abstract (without implementation). And each of the child classes, ie CommissionedEmployee, HourlyEmployee and SalariedEmployee will implement it. <br/>
+Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead. 
 
-<h3> Naming method arguments </h3>
+In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the `CalculatePay()`, `IsPayday()`, and `DeliverPay()` methods as abstract (without implementation). And each of the child classes, ie `CommissionedEmployee`, `HourlyEmployee` and `SalariedEmployee` will implement it. 
 
-Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after. <br/> 
 
-To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:<br/>
+### Naming method arguments
 
-     <strong> <i> In the context of {method name}, this {argument type} is
-     the {argument name}. </i> </strong><br/>
+Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after.
+
+To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:
+
+   _**In the context of {method name}, this {argument type} is
+     the {argument name}.**_
      
-Consider the following example from a chat application: <br/>
+Consider the following example from a chat application:
 
-```
+```c#
 class ChatSession
 {
     ...
@@ -221,15 +224,17 @@ class ChatSession
 }
 ```
 
-The statement sentence would be: “In the context of SendMessage, this user instance is the user.” <br/>
+The statement sentence would be: “In the context of SendMessage, this user instance is the user.”
 
-If you heard that, you’d be immediately asking “what do you mean by user? The user who sends, or the one who receives the message?”. <br/>
+If you heard that, you’d be immediately asking “what do you mean by user? The user who sends, or the one who receives the message?”. 
 
-The user argument here is named after its type, which is a very common thing among programmers. However, “user” is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument. <br/>
 
-Consider another example: <br/>
+The user argument here is named after its type, which is a very common thing among programmers. However, “user” is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument. 
 
-```
+
+Consider another example: 
+
+```c#
 class TradingService
 {
     ...
@@ -240,41 +245,43 @@ class TradingService
 }  
 ```
 
-In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.” <br/>
+In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.” 
 
-But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be <strong> buyer </strong> and <strong> seller </strong>. <br/>
 
-<strong> In other words, we’re not saying that argument must never be named after their type. But rather, that their type is not what determines their name, even though the two can be the same in many occasions.</strong> <br/>
+But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be **buyer** and **seller**.
 
-Consider another example: <br/>
 
-```
+**In other words, we’re not saying that argument must never be named after their type. But rather, that their type is not what determines their name, even though the two can be the same in many occasions.**
+
+
+Consider another example: 
+
+```c#
 public void UpdatePrice(Product product, decimal value)
 {
      ...
 }
 ```
 
-Although the purpose of <strong> value </strong> may not be ambiguous to you, one could still be asking, is this value thing the new price, or the increase in the price? Furthermore, it doesn’t form the best statement sentence: In the context of UpdatePrice, this decimal instance is the value. <br/>
+Although the purpose of **`value`** may not be ambiguous to you, one could still be asking, is this value thing the new price, or the increase in the price? Furthermore, it doesn’t form the best statement sentence: In the context of UpdatePrice, this decimal instance is the value.
 
-If, instead, you named it after its <strong> true role </strong> in that context, which would be <strong> newPrice </strong>, then not only would the statement sentence make perfect sense, but also it would make the code immediately disambiguous. <br/>
+If, instead, you named it after its **true role** in that context, which would be **newPrice**, then not only would the statement sentence make perfect sense, but also it would make the code immediately disambiguous.
 
+### Naming instance methods
 
-<h3> Naming instance methods </h3>
+You previously learnt that a method’s name should start with a verb, and that it should be clear and unambiguous. So what should go after the verb?
 
-You previously learnt that a method’s name should start with a verb, and that it should be clear and unambiguous. So what should go after the verb? <br/>
+To name a method that takes arguments, the verb can optionally be followed by a preposition, and then a noun per argument.
 
-To name a method that takes arguments, the verb can optionally be followed by a preposition, and then a noun per argument. <br/>
+**Method name = Verb + {[Preposition] + Noun} per argument**
 
-<strong> Method name = Verb + {[Preposition] + Noun} per argument </strong> <br/>
+But how should you decide on the “optionally” part?
 
-But how should you decide on the “optionally” part? <br/>
+#### Case study: Shopping basket
 
-<h4> Case study: Shopping basket </h4>
+Let’s look at an example. Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it.
 
-Let’s look at an example. Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it. <br/>
-
-```
+```c#
 class ShoppingBasket
 {
     public void {SomeMethodName}(Product product, int quantity)
@@ -284,55 +291,51 @@ class ShoppingBasket
 }
 ```
 
-What method name would be best? Let’s try a few different choices, from the point of view of the client code: <br/>
+What method name would be best? Let’s try a few different choices, from the point of view of the client code:
 
-<ul>
-    <li> myBasket.Add(product, 3) </li>
-    <li> myBasket.AddProduct(product, 3) </li>
-    <li> myBasket.AddProductQuantity(product, 3) </li>
-    <li> myBasket.AddToBasket(product, 3) </li>
-    <li> myBasket.AddProductToBasket(product, 3) </li>
-    <li> myBasket.AddProductQuantityToBasket(product, 3) </li>
-    <li> myBasket.AddProductQuantityToBasketToBeCheckedOut(product, 3) </li>
-</ul> <br/>
+   - myBasket.Add(product, 3)
+   - myBasket.AddProduct(product, 3)
+   - myBasket.AddProductQuantity(product, 3)
+   - myBasket.AddToBasket(product, 3)
+   - myBasket.AddProductToBasket(product, 3)
+   - myBasket.AddProductQuantityToBasket(product, 3)
+   - myBasket.AddProductQuantityToBasketToBeCheckedOut(product, 3)
 
+Let’s immediately rule out the last option. Although it is the most clear and descriptive option, but it also is verbose and ignores the fact that there is a context that mustn’t be repeated unnecessarily. The “ToBeCheckedOut” part is redundant. Not only is it already implied anyway, but also it’s irrelevant to the method’s responsibility.
 
-Let’s immediately rule out the last option. Although it is the most clear and descriptive option, but it also is verbose and ignores the fact that there is a context that mustn’t be repeated unnecessarily. The “ToBeCheckedOut” part is redundant. Not only is it already implied anyway, but also it’s irrelevant to the method’s responsibility. <br/>
+#### The instance context
+The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the **“ToBasket”** part is is redundant.
 
-<h4> The instance context </h4> 
-The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the <strong> “ToBasket” </strong> part is is redundant. <br/>
+As a rule of thumb, your instance methods should almost never add the defining class’s name to the end of the method.
 
-As a rule of thumb, your instance methods should almost never add the defining class’s name to the end of the method. <br/> 
+#### Arguments in the method name
+So far we have ruled out some of the name options of this method, and are left with:
 
-<h4> Arguments in the method name </h4>
-So far we have ruled out some of the name options of this method, and are left with: <br/>
-<ul>
-    <li> myBasket.Add(product, 3) </li>
-    <li> myBasket.AddProduct(product, 3) </li>
-    <li> myBasket.AddProductQuantity(product, 3) </li>
-</ul> <br/>
+  - myBasket.Add(product, 3)
+  - myBasket.AddProduct(product, 3)
+  - myBasket.AddProductQuantity(product, 3)
 
-So let’s go back to the “optionally” part mentioned at the beginning of this section in relation to adding the argument names to the method name. <br/>
+So let’s go back to the “optionally” part mentioned at the beginning of this section in relation to adding the argument names to the method name.
 
-<strong> When you must include…. </strong> 
+**When you must include….**
 
-There are cases where you must add the argument name to the method name, and that’s when there is an ambiguity to be resolved. <br/>
+There are cases where you must add the argument name to the method name, and that’s when there is an ambiguity to be resolved.
 
-In this example, what if you had another method that added a percentage of the whole inventory to the basket? Then having simply AddProduct(product, 3) would be ambiguous. Are we adding 3 as quantity or as percentage? To disambiguate you’d need to explicitly specify that to the method name. <br/> 
+In this example, what if you had another method that added a percentage of the whole inventory to the basket? Then having simply AddProduct(product, 3) would be ambiguous. Are we adding 3 as quantity or as percentage? To disambiguate you’d need to explicitly specify that to the method name. 
 
-If you didn’t have an ambiguity though, it will be optional to add the name on. <br/>
+If you didn’t have an ambiguity though, it will be optional to add the name on. 
 
-<strong> When it is optional </strong> <br/>
+**When it is optional**
 
-In this example there appears to be no ambiguity about the method, so all 3 options would work. However, for cleanness and brevity, it’s generally preferred to omit the argument names which are deemed obvious and which add no real further clarity to the method’s purpose. <br/>
+In this example there appears to be no ambiguity about the method, so all 3 options would work. However, for cleanness and brevity, it’s generally preferred to omit the argument names which are deemed obvious and which add no real further clarity to the method’s purpose. 
 
-I would argue that simply <strong> Add() </strong> is a perfect name in this case. <br/>
+I would argue that simply <strong> Add() </strong> is a perfect name in this case.
 
-<h4> When there is ambiguity </h4>
+#### When there is ambiguity
 
-Now consider the following example. Let’s say in an issue tracking system, we have a WorkItem class which needs  a method to update the estimation time for the work item: <br/>
+Now consider the following example. Let’s say in an issue tracking system, we have a WorkItem class which needs  a method to update the estimation time for the work item:
 
-```
+```c#
 class WorkItem
 {
        public void {MethodName}(Timespan estimation)
@@ -342,115 +345,109 @@ class WorkItem
 }
 ```
 
-Again let’s consider 3 name choices, and consider them from the client code’s point of view: <br/>
+Again let’s consider 3 name choices, and consider them from the client code’s point of view:
 
-<ul>
-    <li> item.Update(myTimeSpan) </li>
-    <li> item.UpdateEstimation(myTimeSpan) </li>
-    <li> item..UpdateDeveloperEstimation(myTimeSpan) </li>
-</ul>
+  - item.Update(myTimeSpan)
+  - item.UpdateEstimation(myTimeSpan)
+  - item..UpdateDeveloperEstimation(myTimeSpan)
 
-Which option would be the best name? <br/> 
-<ul>
-    
-        <li> The first one is lacking sufficient context.
-             <ul>
-                <li> When you see that invocation, the context tells you that a task is being updated to a new time value. </li>
-                <li> But it doesn’t tell you the meaning of that time value. Is it the estimation date? </li>
-                <li> Is it the actual time it took to complete? … </li>
-             </ul>
-        </li>
 
-        <li> The second example gives you a clearer picture. It’s the estimation of the task being updated, as opposed to any other timespan data of the task. </li>
-        <li> The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation. </li>
+Which option would be the best name? 
+  
+        - The first one is lacking sufficient context.
+             
+              - When you see that invocation, the context tells you that a task is being updated to a new time value. 
+              - But it doesn’t tell you the meaning of that time value. Is it the estimation date?
+              - Is it the actual time it took to complete? …         
 
-</ul><br/>
+        - The second example gives you a clearer picture. It’s the estimation of the task being updated, as opposed to any other timespan data of the task.
+        - The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation. 
 
-The right choice between the second and the third item depends on <strong> whether in the domain of the project there is any ambiguity. </strong> If in that application the only estimation being recorded is that of the developer, then the best name will be simply UpdateEstimation() in order to avoid stating the Obvious. <br/>
+The right choice between the second and the third item depends on  **whether in the domain of the project there is any ambiguity.** If in that application the only estimation being recorded is that of the developer, then the best name will be simply `UpdateEstimation()` in order to avoid stating the Obvious.
 
-<h4> Preposition: Further clarify the argument’s role </h4> 
-When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method. <br/>
+#### Preposition: Further clarify the argument’s role
+When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method.
 
-In the above example, you could use the “To” preposition and add it to the method name: <br/> 
-<ul>
-    <li> item.UpdateEstimationTo(myTimeSpan) </li>
-</ul> <br/>
+In the above example, you could use the “To” preposition and add it to the method name:
 
-Adding prepositions to most methods can arguably make them read more naturally. However, by convention, if the argument’s role is completely obvious you can drop the preposition. Use what makes more sense and which feels more clear. For example, which of the following feels clearer? <br/> 
+ - `item.UpdateEstimationTo(myTimeSpan)`
 
-<ul>
-    <li> myLocation.GetDistanceFrom(anotherLocation) </li>
-    <li> myLocation.GetDistance(anotherLocation) </li>
-</ul> <br/>
+Adding prepositions to most methods can arguably make them read more naturally. However, by convention, if the argument’s role is completely obvious you can drop the preposition. Use what makes more sense and which feels more clear. For example, which of the following feels clearer?
 
-The right answer usually depends on the bigger picture within the containing project. For example if Distance means the geo distance (as opposed to driving distance), then Distance From and Distance To would be the same. In that case adding “From” can potentially be harmful, for example when in a given client code scenario the argument is considered the  destination, and so passing to a method whose name ends with From would cause confusion. <br/>
+   - myLocation.GetDistanceFrom(anotherLocation)
+   - myLocation.GetDistance(anotherLocation)
 
-On the other hand, there are cases where adding a preposition can improve readability, such as TimeSpan.FromMinutes(...) as opposed to TimeSpan.Minutes(...). <br/>
 
-<h3> How many arguments? </h3> 
+The right answer usually depends on the bigger picture within the containing project. For example if Distance means the geo distance (as opposed to driving distance), then Distance From and Distance To would be the same. In that case adding “From” can potentially be harmful, for example when in a given client code scenario the argument is considered the  destination, and so passing to a method whose name ends with From would cause confusion.
 
-The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway. <br/>
+On the other hand, there are cases where adding a preposition can improve readability, such as `TimeSpan.FromMinutes(...)` as opposed to `TimeSpan.Minutes(...)`.
 
-<strong> A large number of arguments in a method is usually a code smell, that something is missing. </strong> 
+### How many arguments?
 
-Often you realise that the grouping of those argument represents an abstraction, a concept, a missing class in your application. Try hard to <strong> come up with a class name that represents that grouping. </strong> If you succeeded, then do create the class and change the original method to take a single instance of that instead of multiple arguments. <br/>
+The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
 
-You might be surprised that sometimes when you do that, you may realise that the original method can actually be moved to that class for a cleaner design.  In particular, if the method was large and doing a lot, you will see that in the context of the new class it can be nicely broken down into several methods with lower abstraction levels. <br/> 
+**A large number of arguments in a method is usually a code smell, that something is missing.** 
 
-<h4> Argument Objects </h4>
+Often you realise that the grouping of those argument represents an abstraction, a concept, a missing class in your application. Try hard to **come up with a class name that represents that grouping.** If you succeeded, then do create the class and change the original method to take a single instance of that instead of multiple arguments.
 
-When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations: <br/>
-```
+You might be surprised that sometimes when you do that, you may realise that the original method can actually be moved to that class for a cleaner design.  In particular, if the method was large and doing a lot, you will see that in the context of the new class it can be nicely broken down into several methods with lower abstraction levels.
+
+#### Argument Objects
+
+When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
+
+```c#
 Circle MakeCircle(double x, double y, double radius);
 ```
 
-```Circle MakeCircle(Point center, double radius);```
+```c# Circle MakeCircle(Point center, double radius);```
 
-Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own. <br/>
+Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own. 
 
-<h4> Params Array Arguments </h4>
+#### Params Array Arguments
 
-Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method: <br/>
+Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
 
-```string.Format("{0} worked {1:F2} hours.", name, hours);``` 
+```c# string.Format("{0} worked {1:F2} hours.", name, hours);``` 
 
-If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#. <br/> 
+If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#.
 
 
 
-<h3> Creating Extension methods </h3> 
-C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class. <br/> 
+### Creating Extension methods
+C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class. 
 
-<h4> Enum methods </h4>
+#### Enum methods
 
-Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like. <br/> 
+Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
 
-<h4> General applicability </h4> 
 
-You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing. <br/> 
+#### General applicability
 
-<h4> Competing with existing methods </h4> 
-Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called. <br/>
+You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing.
 
-Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type. <br/>
+#### Competing with existing methods
+Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called.
 
-<h4> Extension method resolution </h4> 
-For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method. <br/> 
 
-If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.<br/> 
+Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type.
 
-<h4> Avoid Side Effects </h4> 
+#### Extension method resolution
+For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method.
 
-Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:<br/> 
-<ul> 
-    <li> Fields or properties of its own class. </li>
-    <li> Fields or properties of the parameters passed into the function </li>
-    <li> Global stuff such as database, user cookies, … </li>
-</ul> <br/>
+If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.
 
-Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example. <br/>
+#### Avoid Side Effects
 
-```
+Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
+  - Fields or properties of its own class.
+  - Fields or properties of the parameters passed into the function
+  - Global stuff such as database, user cookies, …
+
+
+Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example.
+
+```c#
 public class UserValidator
 {
   public bool CheckPassword(string userName, string password)
@@ -467,21 +464,21 @@ public class UserValidator
 }
 ```
 
-The side effect is the call to Session.initialize(). The CheckPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the function, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.<br/> 
+The side effect is the call to `Session.initialize()`. The CheckPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the function, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.
 
-That is, CheckPassword() can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling. <br/>
+That is, `CheckPassword()` can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling.
 
-<strong> Temporal coupling </strong> 
+**Temporal coupling**
 
-Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension. <br/>
+Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension.
 
-Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function CheckPasswordAndInitializeSession, though that certainly violates the “Do one thing” rule. <br/>
+Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function CheckPasswordAndInitializeSession, though that certainly violates the “Do one thing” rule.
 
-A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. <br/>
+A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. 
 
-<h3> You are a storyteller </h3> 
-When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.  <br/> 
+### You are a storyteller 
+When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
 
-<strong> The art of programming is, and has always been, the art of language design. </strong> 
+**The art of programming is, and has always been, the art of language design.**
 
 Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of C# (as a host language) to construct a much richer and more expressive language that can be used to tell that story. 
