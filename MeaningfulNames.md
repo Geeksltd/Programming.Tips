@@ -11,13 +11,13 @@ Choosing good names takes time but saves more than it takes. So take care with y
 Names should reveal intent. The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. <br>
 
 <i> If a name requires a comment, then the name does not reveal its intent:</i><br/>
-int d; // elapsed time in days <br/>
+```int d; // elapsed time in days ```<br/>
 
 The name d reveals nothing. It does not evoke a sense of elapsed time, nor of days. We should choose a name that specifies what is being measured and the unit of that measurement: <br/>
-int elapsedTimeInDays; 
+```int elapsedTimeInDays; 
 int daysSinceCreation; 
 int daysSinceModification; 
-int fileAgeInDays;
+int fileAgeInDays;```
 
 <br/> Choosing names that reveal intent make it easier to understand and change code.<br/> 
 
@@ -69,7 +69,7 @@ You can add context by using prefixes: addressFirstName, addressLastName, addres
 
 Consider the method below. Do the variables need a more meaningful context? The function name provides only part of the context; the algorithm provides the rest. Once you read through the function, you see that the three variables, number, verb, and pluralModifier, are part of the “guess statistics” message. Unfortunately, the context must be inferred. When you first look at the method, the meanings of the variables are opaque.
 <br/>
-
+```
 void PrintGuessStatistics(char candidate, int count)
 {
  string number;
@@ -97,12 +97,12 @@ void PrintGuessStatistics(char candidate, int count)
 
  var guessMessage = $"There {verb} {number} {candidate}{pluralModifier}";
  Print(guessMessage);
-}
+}```
 <br/>
 
 The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a GuessStatisticsMessage class and make the three variables fields of this class. This provides a clear context for the three variables. They are definitively part of the GuessStatisticsMessage. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions: <br/>
 
-public class GuessStatisticsMessage {
+```public class GuessStatisticsMessage {
  string number, verb, pluralModifier;
 
  public string Make(char candidate, int count) {
@@ -135,7 +135,7 @@ void ThereIsOneLetter()
   verb = "are";
   pluralModifier = "s";
  }
-}
+}```
 <br/>
 
 <strong> Don’t add unnecessary context </strong>
