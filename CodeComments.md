@@ -1,17 +1,27 @@
 ## // Code Comments
-Comments are, at best, a necessary evil. The proper use of comments is to compensate for our failure to express ourselves in code. Note that I used the word failure. I meant it. Comments are always failures. We must have them because we cannot always figure out how to express ourselves without them, but their use is not a cause for celebration. 
-When you find yourself in a position where you need to write a comment, think it through and see whether there is some way to express yourself in code instead. Every time you express yourself in code, you should pat yourself on the back. Every time you write a comment, you should grimace and feel the failure of your ability of expression.
-Comments lie
-Comments lie. Not always, and not intentionally, but too often nevertheless. Code changes and evolves. Unfortunately the comments don’t always keep up and become orphaned blurbs of ever decreasing accuracy. 
-You might be thinking “programmers should be disciplined enough to keep the comments up to date”. I agree, they should. But they won’t. 
-Inaccurate comments are worse than no comments at all. They mislead, set expectations that will never be fulfilled, lay down obsolete rules and specification. Truth can only be found in one place: the code. It is the only source of truly accurate information. 
-Comments Do Not Make Up for Bad Code
-One of the more common motivations for writing comments is bad code. We write a module and we know it is confusing and disorganized. We know it’s a mess. 
-So we say to ourselves, “Ooh, I’d better comment that!” 
-No! You’d better clean it! 
-Explain Yourself in Code
-Which would you rather see?
-// Check to see if the employee is eligible for full benefits 
+Comments are, at best, a necessary evil. The proper use of comments is to compensate for our failure to express ourselves in code. Note that I used the word failure. I meant it. Comments are always failures. We must have them because we cannot always figure out how to express ourselves without them, but their use is not a cause for celebration. <br/> 
+
+When you find yourself in a position where you need to write a comment, think it through and see whether there is some way to express yourself in code instead. Every time you express yourself in code, you should pat yourself on the back. Every time you write a comment, you should grimace and feel the failure of your ability of expression. <br/>
+
+<h3> Comments lie </h3> 
+Comments lie. Not always, and not intentionally, but too often nevertheless. Code changes and evolves. Unfortunately the comments don’t always keep up and become orphaned blurbs of ever decreasing accuracy. <br/>
+
+You might be thinking “programmers should be disciplined enough to keep the comments up to date”. I agree, they should. But they won’t. <br/>
+
+Inaccurate comments are worse than no comments at all. They mislead, set expectations that will never be fulfilled, lay down obsolete rules and specification. Truth can only be found in one place: the code. It is the only source of truly accurate information. <br/>
+
+<h3> Comments Do Not Make Up for Bad Code </h3>
+
+One of the more common motivations for writing comments is bad code. We write a module and we know it is confusing and disorganized. We know it’s a mess. <br/>
+
+So we say to ourselves, “Ooh, I’d better comment that!” <br/>
+No! You’d better clean it! <br/>
+
+<h3> Explain Yourself in Code </h3>
+
+Which would you rather see? <br/> 
+
+```// Check to see if the employee is eligible for full benefits 
 if ((employee.flags & HOURLY_FLAG) && (employee.age > 65))
 {
    ...
@@ -22,6 +32,7 @@ if (employee.IsEligibleForFullBenefits())
 {
    ....
 }
+```
 
 Often you need less than a minute to think and explain your intent in code. In many cases, all you need to do, is creating a function with a name that says the same thing as the comment you want to write!
 Informative Comments
