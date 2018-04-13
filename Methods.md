@@ -91,7 +91,7 @@ Avoid returning arbitrary values from command methods. For example your CreateDa
 
 
 ## Micro abstractions
-...Paymon to write
+
 
 
 ### Do One Thing
