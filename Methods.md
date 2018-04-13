@@ -186,19 +186,31 @@ public decimal CalculatePay()
     }
 }
 ```
-Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable.
-However, if you find that a switch statement on an employee’s type is being repeated, for example for:
-IsPayday(Date date)
-DeliverPay(decimal pay)
-...
-Then it’s a smell that something is missing. When you find yourself repeating switch statements on a particular type of value, you should change that to use polymorphism instead. 
-In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the CalculatePay(), IsPayday(), and DeliverPay() methods as abstract (without implementation). And each of the child classes, ie CommissionedEmployee, HourlyEmployee and SalariedEmployee will implement it.
-Naming method arguments
-Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after.
-To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:
-      In the context of {method name}, this {argument type} is
-     the {argument name}.
-Consider the following example from a chat application:
+Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable. <br/> 
+
+However, if you find that a switch statement on an employee’s type is being repeated, for example for: <br/>
+<ul>
+    <li> IsPayday(Date date) </li>
+    <li> DeliverPay(decimal pay) </li>
+    <li> ... </li>
+</ul> <br/> 
+
+Then it’s a smell that something is missing. When you find yourself <strong> repeating switch statements on a particular type of value </strong>, you should change that to use polymorphism instead. <br/>
+
+In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the CalculatePay(), IsPayday(), and DeliverPay() methods as abstract (without implementation). And each of the child classes, ie CommissionedEmployee, HourlyEmployee and SalariedEmployee will implement it. <br/>
+
+<h3> Naming method arguments </h3>
+
+Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after. <br/> 
+
+To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:<br/>
+
+     <strong> <i> In the context of {method name}, this {argument type} is
+     the {argument name}. </i> </strong><br/>
+     
+Consider the following example from a chat application: <br/>
+
+```
 class ChatSession
 {
     ...
@@ -207,11 +219,17 @@ class ChatSession
        ...
     }
 }
+```
 
-The statement sentence would be: “In the context of SendMessage, this user instance is the user.”
-If you heard that, you’d be immediately asking “what do you mean by user? The user who sends, or the one who receives the message?”. 
-The user argument here is named after its type, which is a very common thing among programmers. However, “user” is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument.
-Consider another example:
+The statement sentence would be: “In the context of SendMessage, this user instance is the user.” <br/>
+
+If you heard that, you’d be immediately asking “what do you mean by user? The user who sends, or the one who receives the message?”. <br/>
+
+The user argument here is named after its type, which is a very common thing among programmers. However, “user” is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument. <br/>
+
+Consider another example: <br/>
+
+```
 class TradingService
 {
     ...
@@ -220,6 +238,7 @@ class TradingService
        ...
     }
 }  
+```
 
 In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.”
 But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be buyer and seller.
