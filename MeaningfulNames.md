@@ -1,5 +1,5 @@
 
-## <strong> Meaningful Names </strong> <br/>
+# <strong> Meaningful Names </strong> <br/>
 
 Names are everywhere in software. We name our variables, functions, arguments, classes, and packages. We name our source files and the directories that contain them. <br/>
 
@@ -7,7 +7,7 @@ Naming is not just coming up with identifiers for things. Naming is about how we
 Naming is the most vital activity you do as a programmer. If you learn to care and take pride in your naming skills, you will be a pro, a valuable member of society, a master. <br/>
 Choosing good names takes time but saves more than it takes. So take care with your names and change them when you find better ones. Everyone who reads your code (including you) will be happier if you do. <br/>
 
-<strong> Use Intention-Revealing Names </strong> <br/>
+### Use Intention-Revealing Names
 Names should reveal intent. The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. <br>
 
 <i> If a name requires a comment, then the name does not reveal its intent:</i><br/>
@@ -24,7 +24,7 @@ int fileAgeInDays;
 ```
 <br/> Choosing names that reveal intent make it easier to understand and change code.<br/> 
 
-<strong> Avoid Disinformation </strong><br/>
+### Avoid Disinformation
 
 Avoid leaving false clues that obscure the meaning of code. Of course you’d think “what?! Why do you think I would do that?”. But it’s easy to make that mistake depending on your focus and state of mind in that moment. <br/>
 When coming up with a name, step back for a second and play devil’s advocate. Think <strong> how else can this name be interpreted? </strong> <br/>
@@ -41,7 +41,7 @@ Avoid using names which vary only in small ways. How long does it take to spot t
 
 In particular, when using code completion in Visual Studio you can type in a few characters and then a space or tab, to easily pick the wrong one! <br /> 
 
-<strong> Avoid noise words </strong> <br/>
+### Avoid noise words 
 
 Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called ProductInfo or ProductData, you have made the names different without making them mean anything different. Info and Data parts are pointless here. The same goes for a, an and the prefixes for variables: they are unnecessary. <br/>
 Noise words are redundant. For example: </br>
@@ -63,15 +63,17 @@ This matters because programming is a social activity. Instead of made-up words 
 <strong> Method Names </strong> <br/>
 Methods should have verb or verb phrase names like Save, PostPayment, DeletePage, IsXyz, CanXyz, HasXyz. You will learn more details later. For casting in particular, you can use ToXyz or AsXyz. <br/> 
 
-<strong> Add Meaningful Context </strong> <br/>
+### Add Meaningful Context
 There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.<br/>
 
 Imagine that you have variables named firstName, lastName, street, houseNumber, city, state, and zipcode. Taken together it’s pretty clear that they form an address. But what if you just saw the <strong> state </strong> variable being used <strong> alone </strong> in a method? Would you automatically infer that it was part of an address? <br/> 
 
-You can add context by using prefixes: addressFirstName, addressLastName, addressState, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to <strong> create a class </strong> named Address. Then, even the compiler knows that the variables belong to a bigger concept. <br/> <br/>
+You can add context by using prefixes: addressFirstName, addressLastName, addressState, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to <strong> create a class </strong> named Address. Then, even the compiler knows that the variables belong to a bigger concept.
+
 
 Consider the method below. Do the variables need a more meaningful context? The function name provides only part of the context; the algorithm provides the rest. Once you read through the function, you see that the three variables, number, verb, and pluralModifier, are part of the “guess statistics” message. Unfortunately, the context must be inferred. When you first look at the method, the meanings of the variables are opaque.
-<br/>
+
+
 ```c#
 void PrintGuessStatistics(char candidate, int count)
 {
@@ -144,7 +146,7 @@ void ThereIsOneLetter()
 ```
 <br/>
 
-<strong> Don’t add unnecessary context </strong>
+### Don’t add unnecessary context
 
 In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD. Always think whether a context is already implied and avoid adding the obvious as it’s just noise. <br/>
 
