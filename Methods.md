@@ -38,29 +38,43 @@ public static SomeType CreateFrom(...) { ... }
 public string GenerateXyzReport() { ... }
 ```
 
-The key point here is that the method name should start with a verb. For example the following examples are poor choices as they don’t start with a verb:
+The key point here is that the method name should start with a verb. For example the following examples are poor choices as they don’t start with a verb: <br/>
+
+```
 public Company Company() { ... }
 public void Transactions() { ... }
 public void SlowlyProcess() { ... }
+```
 
-The last example above starts with an adverb. A better name for it would be ProcessSlowly(). 
-Name of Command functions
-Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
+The last example above starts with an adverb. A better name for it would be ProcessSlowly(). <br/> 
+
+<h4> Name of Command functions </h4>
+
+Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be: <br/> 
+
+```
 public void Archive()  { ... }
 public void RestoreToLive()  { ... }
 public async Task UpdateParent(...) { ... }
 public async Task SendToXyz(...) { ... }
+```
 
-What should a command function return?
-Ideally command methods usually return void (or Task, in async programming).
-Sometimes command methods return a Boolean value that represents success or failure of the operation. This is normally not a good practice. Instead the method should throw an exception in the case of a failure. Though, if you have a critical performance situation where the microseconds overhead added by exceptions is not acceptable, then returning Boolean would be ok.
-If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named CreateDailyTimesheet() may add a new timesheet record in the database, and immediately return it. 
+<strong> What should a command function return? </strong><br/>
+
+Ideally command methods usually return <strong> void </strong> (or <strong> Task </strong> , in async programming). <br/> 
+
+Sometimes command methods return a <strong> Boolean </strong> value that represents success or failure of the operation. This is normally not a good practice. Instead the method should <strong> throw an exception </strong> in the case of a failure. Though, if you have a  <strong> critical performance situation </strong> where the microseconds overhead added by exceptions is not acceptable, then returning Boolean would be ok. <br/>
+
+If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named CreateDailyTimesheet() may add a new timesheet record in the database, and immediately return it. <br/>
+
+```
 public Timesheet CreateDailyTimesheet(Employee employee)
 {
     var result = new TimeSheet { ... };
     Database.Save(result);
     return result;
 }
+```
 
 Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month!
 Micro abstractions 
