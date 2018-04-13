@@ -49,7 +49,7 @@ In particular, when using code completion in Visual Studio you can type in a few
 
 ### Avoid noise words 
 
-Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called ProductInfo or ProductData, you have made the names different without making them mean anything different. Info and Data parts are pointless here. The same goes for a, an and the prefixes for variables: they are unnecessary.
+Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different. Info and Data parts are pointless here. The same goes for a, an and the prefixes for variables: they are unnecessary.
 Noise words are redundant. For example:
 
    * The word **table** should never appear in a table name. 
@@ -64,20 +64,20 @@ This matters because programming is a social activity. Instead of made-up words 
 
 ## Class Names
 
-   - Classes and objects should have noun or noun phrase names like Customer, WikiPage, Account, and AddressParser.
+   - Classes and objects should have noun or noun phrase names like `Customer`, `WikiPage`, `Account`, and `AddressParser`.
    - It should be singular not plural.
    - A class name should not be a verb, adjective or adverb.
-   - Also avoid words that are too broad like Manager, Processor, Data, or Info in the name of a class.
+   - Also avoid words that are too broad like `Manager`, `Processor`, `Data`, or `Info` in the name of a class.
 
 ## Method Names
-Methods should have verb or verb phrase names like Save, PostPayment, DeletePage, IsXyz, CanXyz, HasXyz. You will learn more details later. For casting in particular, you can use ToXyz or AsXyz.
+Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
 
 ### Add Meaningful Context
 There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
 
-Imagine that you have variables named firstName, lastName, street, houseNumber, city, state, and zipcode. Taken together it’s pretty clear that they form an address. But what if you just saw the **state** variable being used **alone** in a method? Would you automatically infer that it was part of an address? 
+Imagine that you have variables named `firstName`, `lastName`, `street`, `houseNumber`, `city`, `state`, and `zipcode`. Taken together it’s pretty clear that they form an address. But what if you just saw the **state** variable being used **alone** in a method? Would you automatically infer that it was part of an address? 
 
-You can add context by using prefixes: addressFirstName, addressLastName, addressState, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to **create a class** named Address. Then, even the compiler knows that the variables belong to a bigger concept.
+You can add context by using prefixes: `addressFirstName`, `addressLastName`, `addressState`, and so on. At least readers will understand that these variables are part of a larger structure. But a better solution is to **create a class** named Address. Then, even the compiler knows that the variables belong to a bigger concept.
 
 
 Consider the method below. Do the variables need a more meaningful context? The function name provides only part of the context; the algorithm provides the rest. Once you read through the function, you see that the three variables, number, verb, and pluralModifier, are part of the “guess statistics” message. Unfortunately, the context must be inferred. When you first look at the method, the meanings of the variables are opaque.
@@ -115,25 +115,29 @@ void PrintGuessStatistics(char candidate, int count)
 ```
 
 
-The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a GuessStatisticsMessage class and make the three variables fields of this class. This provides a clear context for the three variables. They are definitively part of the GuessStatisticsMessage. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions: 
+The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a `GuessStatisticsMessage` class and make the three variables fields of this class. This provides a clear context for the three variables. They are definitively part of the `GuessStatisticsMessage`. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions: 
 
 ```c#
-public class GuessStatisticsMessage {
+public class GuessStatisticsMessage 
+{
  string number, verb, pluralModifier;
 
- public string Make(char candidate, int count) {
+ public string Make(char candidate, int count)
+ {
   CreatePluralDependentMessageParts(count);
   return string.Format("There %s %s %s%s",
    verb, number, candidate, pluralModifier);
  }
 
- void CreatePluralDependentMessageParts(int count) {
+ void CreatePluralDependentMessageParts(int count)
+ {
   if (count == 0) ThereAreNoLetters();
   else if (count == 1) ThereIsOneLetter();
   else ThereAreManyLetters(count);
  }
 
- void ThereAreManyLetters(int count) {
+ void ThereAreManyLetters(int count) 
+ {
   number = count.ToString();
   verb = "are";
   pluralModifier = "s";
@@ -146,7 +150,8 @@ void ThereIsOneLetter()
   pluralModifier = "";
 }
 
- void ThereAreNoLetters() {
+ void ThereAreNoLetters()
+ {
   number = "no";
   verb = "are";
   pluralModifier = "s";
@@ -161,6 +166,6 @@ In an imaginary application called “Gas Station Deluxe,” it is a bad idea to
 Likewise, if you have a Mailing Address class in GSD’s “accounting” application, if you named it **GSDAccount** Address. Ten of 17 characters are redundant as they are already implied.
 
 Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.
-The names accountAddress and customerAddress are fine names for instance variables of the class Address but could be poor names for classes. Address is a fine name for the class. If I need to differentiate between MAC addresses, port addresses, and Web addresses, then maybe you need to call it PostalAddress.
+The names `accountAddress` and `customerAddress` are fine names for instance variables of the class `Address` but could be poor names for classes. Address is a fine name for the class. If I need to differentiate between MAC addresses, port addresses, and Web addresses, then maybe you need to call it `PostalAddress`.
 
 The essential rule for naming is: **Add as few words as necessary, to uniquely identify what you are naming, considering all implied context, and without causing ambiguity.**
