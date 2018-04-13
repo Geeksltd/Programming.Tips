@@ -190,9 +190,9 @@ Basically it is saying that depending on the type of the employee, run a differe
 
 However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 
-    - IsPayday(Date date)
-    - DeliverPay(decimal pay)
-    - ...
+   - IsPayday(Date date)
+   - DeliverPay(decimal pay)
+   - ...
 
 Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead. 
 
