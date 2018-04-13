@@ -98,12 +98,14 @@ void PrintGuessStatistics(char candidate, int count)
 
  var guessMessage = $"There {verb} {number} {candidate}{pluralModifier}";
  Print(guessMessage);
-}```
+}
+```
 <br/>
 
 The function is a bit too long and the variables are used throughout. To split the function into smaller pieces we need to create a GuessStatisticsMessage class and make the three variables fields of this class. This provides a clear context for the three variables. They are definitively part of the GuessStatisticsMessage. The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions: <br/>
 
-```public class GuessStatisticsMessage {
+```
+public class GuessStatisticsMessage {
  string number, verb, pluralModifier;
 
  public string Make(char candidate, int count) {
@@ -136,7 +138,8 @@ void ThereIsOneLetter()
   verb = "are";
   pluralModifier = "s";
  }
-}```
+}
+```
 <br/>
 
 <strong> Don’t add unnecessary context </strong>
