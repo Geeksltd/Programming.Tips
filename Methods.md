@@ -147,21 +147,22 @@ Learning to think this way is very important. It is the key to keeping functions
 
 Think of a well-written newspaper article. You read it vertically.
 
-    -  At the top you see a headline that will:
-            - tell you what the story is about
-            - allow you to decide if you want to read it.
+   - At the top you see a headline that will:
+      - tell you what the story is about
+      - allow you to decide if you want to read it.
    
-    - The first paragraph gives you a synopsis of the whole story which:
-            -  Hides all the details
-            - Gives you the broad-brush concepts.
-    - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+   - The first paragraph gives you a synopsis of the whole story which:
+      -  Hides all the details
+      - Gives you the broad-brush concepts.
+   - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
 
 **We would like a source file to be like a newspaper article:**
 
-    - The name should be simple but explanatory.
-    - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
-    - The topmost parts of the source file should provide the high-level concepts and algorithms.
-    - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
+   - The name should be simple but explanatory.
+   - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+   - The topmost parts of the source file should provide the high-level concepts and algorithms.
+   - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
+   
 Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
 
 
@@ -350,14 +351,13 @@ Again let’s consider 3 name choices, and consider them from the client code’
 
 Which option would be the best name? 
   
-        - The first one is lacking sufficient context.
-             
-              - When you see that invocation, the context tells you that a task is being updated to a new time value. 
-              - But it doesn’t tell you the meaning of that time value. Is it the estimation date?
-              - Is it the actual time it took to complete? …         
+   - The first one is lacking sufficient context.
+      - When you see that invocation, the context tells you that a task is being updated to a new time value. 
+      - But it doesn’t tell you the meaning of that time value. Is it the estimation date?
+      - Is it the actual time it took to complete? …         
 
-        - The second example gives you a clearer picture. It’s the estimation of the task being updated, as opposed to any other timespan data of the task.
-        - The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation. 
+   - The second example gives you a clearer picture. It’s the estimation of the task being updated, as opposed to any other timespan data of the task.
+   - The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation. 
 
 The right choice between the second and the third item depends on  **whether in the domain of the project there is any ambiguity.** If in that application the only estimation being recorded is that of the developer, then the best name will be simply `UpdateEstimation()` in order to avoid stating the Obvious.
 
@@ -366,12 +366,12 @@ When passing an argument to a method, if you think about its role in that contex
 
 In the above example, you could use the “To” preposition and add it to the method name:
 
- - `item.UpdateEstimationTo(myTimeSpan)`
+   - `item.UpdateEstimationTo(myTimeSpan)`
 
 Adding prepositions to most methods can arguably make them read more naturally. However, by convention, if the argument’s role is completely obvious you can drop the preposition. Use what makes more sense and which feels more clear. For example, which of the following feels clearer?
 
-   - myLocation.GetDistanceFrom(anotherLocation)
-   - myLocation.GetDistance(anotherLocation)
+   - `myLocation.GetDistanceFrom(anotherLocation)`
+   - `myLocation.GetDistance(anotherLocation)`
 
 
 The right answer usually depends on the bigger picture within the containing project. For example if Distance means the geo distance (as opposed to driving distance), then Distance From and Distance To would be the same. In that case adding “From” can potentially be harmful, for example when in a given client code scenario the argument is considered the  destination, and so passing to a method whose name ends with From would cause confusion.
@@ -396,7 +396,9 @@ When a function seems to need more than two or three arguments, it is likely tha
 Circle MakeCircle(double x, double y, double radius);
 ```
 
-```c# Circle MakeCircle(Point center, double radius);```
+```c# 
+Circle MakeCircle(Point center, double radius);
+```
 
 Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own. 
 
@@ -404,7 +406,9 @@ Reducing the number of arguments by creating objects out of them may seem like c
 
 Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
 
-```c# string.Format("{0} worked {1:F2} hours.", name, hours);``` 
+```c#
+string.Format("{0} worked {1:F2} hours.", name, hours);
+``` 
 
 If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#.
 
