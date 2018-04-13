@@ -91,7 +91,7 @@ The following advice has appeared in one form or another for 30 years or more. <
     FUNCTIONS SHOULD DO ONE THING. <br/>
     THEY SHOULD DO IT WELL. <br/>
     THEY SHOULD DO IT ONLY. <br/>
-</strong>
+</strong> <br/>
 
 But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things? <br/>
 
@@ -129,17 +129,33 @@ To say this differently, we want to be able to read the program as though it wer
 </ul> <br/> 
 
 
-Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
-Dependent methods: If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.
-The Newspaper Metaphor
-Think of a well-written newspaper article. You read it vertically. 
-At the top you see a headline that will:
-tell you what the story is about 
-allow you to decide if you want to read it. 
-The first paragraph gives you a synopsis of the whole story which:
-Hides all the details 
-Gives you the broad-brush concepts. 
-As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia.
+Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent. <br/>
+
+<strong> Dependent methods: </strong> If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.<br/>
+
+<h4> The Newspaper Metaphor </h4>
+
+Think of a well-written newspaper article. You read it vertically. <br/>
+<ul>
+    
+<li> 
+    At the top you see a headline that will:
+    <ul>
+        <li>  tell you what the story is about </li>
+        <li> allow you to decide if you want to read it. </li>
+    </ul>
+</li>
+<li> 
+    The first paragraph gives you a synopsis of the whole story which:
+    <ul>
+        <li>  Hides all the details </li>
+        <li> Gives you the broad-brush concepts. </li>
+    </ul>
+</li>
+<li> As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+
+</ul>
+
 We would like a source file to be like a newspaper article:
 The name should be simple but explanatory. 
 The name, by itself, should be sufficient to tell us whether we are in the right module or not.
