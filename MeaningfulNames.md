@@ -59,13 +59,13 @@ Noise words are redundant. For example: </br>
 
 If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. “Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?” <br/>
 This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms. <br/><br/> 
-<strong> Class Names </strong> <br/>
-<ul>
-   <li> Classes and objects should have noun or noun phrase names like Customer, WikiPage, Account, and AddressParser. </li>
-   <li> It should be singular not plural. </li>
-   <li> A class name should not be a verb, adjective or adverb. </li>
-   <li> Also avoid words that are too broad like Manager, Processor, Data, or Info in the name of a class. </li>
-</ul>
+
+## Class Names
+
+   - Classes and objects should have noun or noun phrase names like Customer, WikiPage, Account, and AddressParser.
+   - It should be singular not plural.
+   - A class name should not be a verb, adjective or adverb.
+   - Also avoid words that are too broad like Manager, Processor, Data, or Info in the name of a class.
 
 ## Method Names
 Methods should have verb or verb phrase names like Save, PostPayment, DeletePage, IsXyz, CanXyz, HasXyz. You will learn more details later. For casting in particular, you can use ToXyz or AsXyz. <br/> 
