@@ -26,24 +26,35 @@ if ((employee.flags & HOURLY_FLAG) && (employee.age > 65))
 {
    ...
 }
-
+```
 OR
+
+```
 if (employee.IsEligibleForFullBenefits())
 {
    ....
 }
 ```
 
-Often you need less than a minute to think and explain your intent in code. In many cases, all you need to do, is creating a function with a name that says the same thing as the comment you want to write!
-Informative Comments
-It is sometimes useful to provide basic information with a comment. For example:
+Often you need less than a minute to think and explain your intent in code. In many cases, all you need to do, is creating a function with a name that says the same thing as the comment you want to write! <br/>
+
+<h4> Informative Comments </h4> 
+
+It is sometimes useful to provide basic information with a comment. For example: <br/> 
+
+```
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 var timeMatcher = new Regex("\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
+```
 
-In this case the comment lets us know that the regular expression is intended to match a time and date. 
-Even in this example, it would have been better to define a string constant named DateTimeRegexFormat, instead of a comment.
-Explanation of Intent
-Sometimes a comment goes beyond just the implementation and provides the intent behind a decision. For example:
+In this case the comment lets us know that the regular expression is intended to match a time and date. <br/>
+
+Even in this example, it would have been better to define a string constant named DateTimeRegexFormat, instead of a comment. <br/>
+
+<h4> Explanation of Intent </h4>
+Sometimes a comment goes beyond just the implementation and provides the intent behind a decision. For example: <br/>
+
+```
 public void TestConcurrentAddWidgets()
 {
     ...
@@ -58,70 +69,103 @@ public void TestConcurrentAddWidgets()
 
     assertEquals(...);
 }
-Clarification
-When using libraries and code that you cannot change and clean up, you can use comments to clarify the meaning of obscure arguments or return value. For example:
+```
+
+<h4> Clarification </h4>
+
+When using libraries and code that you cannot change and clean up, you can use comments to clarify the meaning of obscure arguments or return value. For example: <br/> 
+
+```
 assertTrue(a.compareTo(b) != 0);    // a != b
 assertTrue(a.compareTo(b) == 0);  // a == b
 assertTrue(a.compareTo(b) == -1);   // a < b
+```
 
-Warning of Consequences
-Sometimes it is useful to warn other programmers about certain consequences. For example, a comment can specify whether a class or method is thread safe. 
 
-TODO Comments
-It is sometimes reasonable to leave reminders and action notes in the form of // TODO comments. TODOs are jobs that you think should be done, but for some reason can’t do at the moment. For example:
+<h4> Warning of Consequences </h4>
+Sometimes it is useful to warn other programmers about certain consequences. For example, a comment can specify whether a class or method is thread safe. <br/>
+
+<h4> TODO Comments </h4> 
+It is sometimes reasonable to leave reminders and action notes in the form of // TODO comments. TODOs are jobs that you think should be done, but for some reason can’t do at the moment. For example: <br/>
+
+```
 // TODO: We expect this to be removed when ...
 protected VersionInfo MakeVersion()
 { 
       return null;
 }
+```
 
-Visual Studio can locate all the TODO comments and show them as messages in the error window, so it’s not likely that they will get lost. 
+Visual Studio can locate all the TODO comments and show them as messages in the error window, so it’s not likely that they will get lost. <br/>
 
-XML Docs vs Comments
-When the comments relate to a class, method or a method argument, then write the comments as XML documentation. This allows callers to immediately notice them using intellisense without having to look at your code. 
 
+<h4> XML Docs vs Comments </h4>
+
+When the comments relate to a class, method or a method argument, then write the comments as XML documentation. This allows callers to immediately notice them using intellisense without having to look at your code. <br/> 
+
+```
 /// <summary> comments here </summary>
 public void Something()
 {
      ...
 }
+```
 
-Bad Comments
-Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for insufficient decisions, amounting to little more than the programmer talking to himself.
-Avoid Mumbling
-Comments are meant to be understandable by other people. When you write a comment, read it again. Make sure that it makes sense for other people that are not in your head. 
-Redundant Comments
-Avoid comments that essentially just repeat what the code does in plain English. They probably take longer to read than the code itself. 
+<h3> Bad Comments </h3> 
 
-Remember that anyone reading that comment will be a programmer and so will naturally read the code too anyway. 
-Such comments will be less precise than the code and, when they get out of sync in the future, will just cause confusion, or worse, mislead the poor reader. 
+Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for insufficient decisions, amounting to little more than the programmer talking to himself. <br/>
 
-Mandated Comments
-Some companies have a rule that says that every function must have xml documentation, or every variable must have a comment. That’s plain silly for the reasons explained above. 
+<h4> Avoid Mumbling </h4>
+Comments are meant to be understandable by other people. When you write a comment, read it again. Make sure that it makes sense for other people that are not in your head. <br/>
 
-Unfortunately, there is an evil warning code 1591 in Visual Studio which kicks in when you enable XML documentation file generation in the build settings of a project. It prompts you to add xml comments to everything that is public. Do not obey that. Instead, suppress the rule code in the project build settings. 
+<h4> Redundant Comments </h4>
+Avoid comments that essentially just repeat what the code does in plain English. They probably take longer to read than the code itself. <br/>
 
 
+Remember that anyone reading that comment will be a programmer and so will naturally read the code too anyway. <br/>
 
-Replace comments with methods or variables 
-Consider the following code:
+Such comments will be less precise than the code and, when they get out of sync in the future, will just cause confusion, or worse, mislead the poor reader. <br/>
+
+<h4> Mandated Comments </h4> 
+Some companies have a rule that says that every function must have xml documentation, or every variable must have a comment. That’s plain silly for the reasons explained above. <br/>
+
+Unfortunately, there is an evil warning code 1591 in Visual Studio which kicks in when you enable XML documentation file generation in the build settings of a project. It prompts you to add xml comments to everything that is public. Do not obey that. Instead, suppress the rule code in the project build settings. <br/> 
+
+
+
+<h4> Replace comments with methods or variables </h4>
+
+Consider the following code: <br/> 
+
+```
 // Can the order be submitted?
 If (basket.Total > 0 && basket.Items.All(x => x.IsAvailable())
 {
    ....
 }
 
-It could be written without comments as:
+``` 
+It could be written without comments as: <br/> 
+
+```
 var canBeSubmitted = 
    basket.Total > 0 && basket.Items.All(x=>x.IsAvailable());
 if (canBeSubmitted)
 {
    ....
 }
-The same technique can be used with methods. Methods are preferred to variables when the implementation logic is a bit more complicated or when the concept is reusable. In the above example, a method named canBeSubmitted() defines on the Basket class would have been more clear. 
-Function Headers
-Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header. 
-Commented-Out Code
-Sometimes you want to temporarily comment out some code and try an alternative implementation. Or you think something is unnecessary and you want to delete it, but half heartedly. 
-Others who see that commented-out code won’t have the courage to delete it. They’ll think it is there for a reason and is too important to delete. So commented-out code accumulates like dirt. 
-You should never push commented out code into GIT. If you are happy enough with the changes that you want to check them into the repository, just delete the commented out code before you do.
+```
+
+The same technique can be used with methods. Methods are preferred to variables when the implementation logic is a bit more complicated or when the concept is reusable. In the above example, a method named canBeSubmitted() defines on the Basket class would have been more clear. <br/>
+
+<h4> Function Headers </h4>
+
+Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header. <br/>
+
+<h4> Commented-Out Code </h4>
+
+Sometimes you want to temporarily comment out some code and try an alternative implementation. Or you think something is unnecessary and you want to delete it, but half heartedly. <br/>
+
+Others who see that commented-out code won’t have the courage to delete it. They’ll think it is there for a reason and is too important to delete. So commented-out code accumulates like dirt. <br/>
+
+You should never push commented out code into GIT. If you are happy enough with the changes that you want to check them into the repository, just delete the commented out code before you do. <br/>
