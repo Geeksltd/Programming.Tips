@@ -385,44 +385,72 @@ Adding prepositions to most methods can arguably make them read more naturally. 
 
 The right answer usually depends on the bigger picture within the containing project. For example if Distance means the geo distance (as opposed to driving distance), then Distance From and Distance To would be the same. In that case adding “From” can potentially be harmful, for example when in a given client code scenario the argument is considered the  destination, and so passing to a method whose name ends with From would cause confusion. <br/>
 
-On the other hand, there are cases where adding a preposition can improve readability, such as TimeSpan.FromMinutes(...) as opposed to TimeSpan.Minutes(...).
-How many arguments?
-The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
-A large number of arguments in a method is usually a code smell, that something is missing. 
-Often you realise that the grouping of those argument represents an abstraction, a concept, a missing class in your application. Try hard to come up with a class name that represents that grouping. If you succeeded, then do create the class and change the original method to take a single instance of that instead of multiple arguments. 
-You might be surprised that sometimes when you do that, you may realise that the original method can actually be moved to that class for a cleaner design.  In particular, if the method was large and doing a lot, you will see that in the context of the new class it can be nicely broken down into several methods with lower abstraction levels. 
-Argument Objects
-When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
+On the other hand, there are cases where adding a preposition can improve readability, such as TimeSpan.FromMinutes(...) as opposed to TimeSpan.Minutes(...). <br/>
+
+<h3> How many arguments? </h3> 
+
+The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway. <br/>
+
+<strong> A large number of arguments in a method is usually a code smell, that something is missing. </strong> 
+
+Often you realise that the grouping of those argument represents an abstraction, a concept, a missing class in your application. Try hard to <strong> come up with a class name that represents that grouping. </strong> If you succeeded, then do create the class and change the original method to take a single instance of that instead of multiple arguments. <br/>
+
+You might be surprised that sometimes when you do that, you may realise that the original method can actually be moved to that class for a cleaner design.  In particular, if the method was large and doing a lot, you will see that in the context of the new class it can be nicely broken down into several methods with lower abstraction levels. <br/> 
+
+<h4> Argument Objects </h4>
+
+When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations: <br/>
+```
 Circle MakeCircle(double x, double y, double radius);
+```
 
-Circle MakeCircle(Point center, double radius);
+```Circle MakeCircle(Point center, double radius);```
 
-Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own.
-Params Array Arguments
-Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
-string.Format("{0} worked {1:F2} hours.", name, hours);
+Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own. <br/>
 
-If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#. 
+<h4> Params Array Arguments </h4>
+
+Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method: <br/>
+
+```string.Format("{0} worked {1:F2} hours.", name, hours);``` 
+
+If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#. <br/> 
 
 
-Creating Extension methods
-C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class. 
-Enum methods
-Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
-General applicability
-You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing. 
-Competing with existing methods
-Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called.
-Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type.
-Extension method resolution
-For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method. 
-If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.
-Avoid Side Effects
-Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
-Fields or properties of its own class. 
-Fields or properties of the parameters passed into the function
-Global stuff such as database, user cookies, …
-Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example. 
+
+<h3> Creating Extension methods </h3> 
+C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class. <br/> 
+
+<h4> Enum methods </h4>
+
+Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like. <br/> 
+
+<h4> General applicability </h4> 
+
+You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing. <br/> 
+
+<h4> Competing with existing methods </h4> 
+Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called. <br/>
+
+Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type. <br/>
+
+<h4> Extension method resolution </h4> 
+For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method. <br/> 
+
+If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.<br/> 
+
+<h4> Avoid Side Effects </h4> 
+
+Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:<br/> 
+<ul> 
+    <li> Fields or properties of its own class. </li>
+    <li> Fields or properties of the parameters passed into the function </li>
+    <li> Global stuff such as database, user cookies, … </li>
+</ul> <br/>
+
+Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example. <br/>
+
+```
 public class UserValidator
 {
   public bool CheckPassword(string userName, string password)
@@ -437,14 +465,23 @@ public class UserValidator
      return true;
   }
 }
+```
 
-The side effect is the call to Session.initialize(). The CheckPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the function, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.
-That is, CheckPassword() can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling.
-Temporal coupling
-Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension.
-Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function CheckPasswordAndInitializeSession, though that certainly violates the “Do one thing” rule.
-A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. 
-You are a storyteller
-When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language. 
-The art of programming is, and has always been, the art of language design.
+The side effect is the call to Session.initialize(). The CheckPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the function, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.<br/> 
+
+That is, CheckPassword() can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling. <br/>
+
+<strong> Temporal coupling </strong> 
+
+Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension. <br/>
+
+Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function CheckPasswordAndInitializeSession, though that certainly violates the “Do one thing” rule. <br/>
+
+A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. <br/>
+
+<h3> You are a storyteller </h3> 
+When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.  <br/> 
+
+<strong> The art of programming is, and has always been, the art of language design. </strong> 
+
 Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of C# (as a host language) to construct a much richer and more expressive language that can be used to tell that story. 
