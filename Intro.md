@@ -1,5 +1,5 @@
-## This is a markdown file
-<strong> Introduction </strong><br>
+## <strong> Introduction </strong><br>
+
 
 It’s easy to write code that makes sense to you. At the time of writing, you will be deep in an understanding of the problem you’re trying to solve. But later on, other people maintaining the code, including the future you, aren’t going to have so deep an understanding.
 The majority of the cost of a software project is in long-term maintenance. As systems become more complex, they take more and more time for a developer to understand. The clearer the author can make the code, the less time others will have to spend understanding it, and the happier everyone will be. 
