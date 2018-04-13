@@ -27,7 +27,7 @@ public bool CaresFor(...) { ... }
 
 ```
 
-Avoid command-like verbs for these. For instance avoid a Boolean method named Validate() or Submit(), etc.
+Avoid command-like verbs for these. For instance avoid a Boolean method named `Validate()` or `Submit()`, etc.
 
 ### Name of Query functions (non Boolean)
 
@@ -54,7 +54,7 @@ public void Transactions() { ... }
 public void SlowlyProcess() { ... }
 ```
 
-The last example above starts with an adverb. A better name for it would be ProcessSlowly().
+The last example above starts with an adverb. A better name for it would be `ProcessSlowly()`.
 
 ### Name of Command functions
 
@@ -87,7 +87,7 @@ public Timesheet CreateDailyTimesheet(Employee employee)
 }
 ```
 
-Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month!
+Avoid returning arbitrary values from command methods. For example your `CreateDailyTimesheet()` must not return a decimal value to represent the total hours worked in a month!
 
 
 ## Micro abstractions
@@ -111,7 +111,7 @@ It’s not about the number of statements or logic but rather the level of abstr
 When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other functions and run steps that are **one level below the stated name of the function**. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction.
 
 To know if a function is doing more than “one thing”  try to extract another function from one or a bunch of its statements and give it a sensible name. Then think whether this new function (concept) is:
-   -  A level of abstraction below the original method; or
+   - A level of abstraction below the original method; or
    - At the same level as the original one, merely a restatement of its implementation.
 
 **Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
@@ -190,8 +190,8 @@ Basically it is saying that depending on the type of the employee, run a differe
 
 However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 
-   - IsPayday(Date date)
-   - DeliverPay(decimal pay)
+   - `IsPayday(Date date)`
+   - `DeliverPay(decimal pay)`
    - ...
 
 Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead. 
@@ -290,13 +290,13 @@ class ShoppingBasket
 
 What method name would be best? Let’s try a few different choices, from the point of view of the client code:
 
-   - myBasket.Add(product, 3)
-   - myBasket.AddProduct(product, 3)
-   - myBasket.AddProductQuantity(product, 3)
-   - myBasket.AddToBasket(product, 3)
-   - myBasket.AddProductToBasket(product, 3)
-   - myBasket.AddProductQuantityToBasket(product, 3)
-   - myBasket.AddProductQuantityToBasketToBeCheckedOut(product, 3)
+   - `myBasket.Add(product, 3)`
+   - `myBasket.AddProduct(product, 3)`
+   - `myBasket.AddProductQuantity(product, 3)`
+   - `myBasket.AddToBasket(product, 3)`
+   - `myBasket.AddProductToBasket(product, 3)`
+   - `myBasket.AddProductQuantityToBasket(product, 3)`
+   - `myBasket.AddProductQuantityToBasketToBeCheckedOut(product, 3)`
 
 Let’s immediately rule out the last option. Although it is the most clear and descriptive option, but it also is verbose and ignores the fact that there is a context that mustn’t be repeated unnecessarily. The “ToBeCheckedOut” part is redundant. Not only is it already implied anyway, but also it’s irrelevant to the method’s responsibility.
 
@@ -308,9 +308,9 @@ As a rule of thumb, your instance methods should almost never add the defining c
 #### Arguments in the method name
 So far we have ruled out some of the name options of this method, and are left with:
 
-  - myBasket.Add(product, 3)
-  - myBasket.AddProduct(product, 3)
-  - myBasket.AddProductQuantity(product, 3)
+  - `myBasket.Add(product, 3)`
+  - `myBasket.AddProduct(product, 3)`
+  - `myBasket.AddProductQuantity(product, 3)`
 
 So let’s go back to the “optionally” part mentioned at the beginning of this section in relation to adding the argument names to the method name.
 
@@ -318,7 +318,7 @@ So let’s go back to the “optionally” part mentioned at the beginning of th
 
 There are cases where you must add the argument name to the method name, and that’s when there is an ambiguity to be resolved.
 
-In this example, what if you had another method that added a percentage of the whole inventory to the basket? Then having simply AddProduct(product, 3) would be ambiguous. Are we adding 3 as quantity or as percentage? To disambiguate you’d need to explicitly specify that to the method name. 
+In this example, what if you had another method that added a percentage of the whole inventory to the basket? Then having simply `AddProduct(product, 3)` would be ambiguous. Are we adding 3 as quantity or as percentage? To disambiguate you’d need to explicitly specify that to the method name. 
 
 If you didn’t have an ambiguity though, it will be optional to add the name on. 
 
@@ -326,7 +326,7 @@ If you didn’t have an ambiguity though, it will be optional to add the name on
 
 In this example there appears to be no ambiguity about the method, so all 3 options would work. However, for cleanness and brevity, it’s generally preferred to omit the argument names which are deemed obvious and which add no real further clarity to the method’s purpose. 
 
-I would argue that simply <strong> Add() </strong> is a perfect name in this case.
+I would argue that simply **`Add()`** is a perfect name in this case.
 
 #### When there is ambiguity
 
@@ -344,9 +344,9 @@ class WorkItem
 
 Again let’s consider 3 name choices, and consider them from the client code’s point of view:
 
-  - item.Update(myTimeSpan)
-  - item.UpdateEstimation(myTimeSpan)
-  - item..UpdateDeveloperEstimation(myTimeSpan)
+  - `item.Update(myTimeSpan)`
+  - `item.UpdateEstimation(myTimeSpan)`
+  - `item..UpdateDeveloperEstimation(myTimeSpan)`
 
 
 Which option would be the best name? 
@@ -472,7 +472,7 @@ That is, `CheckPassword()` can only be called at certain times, when it is safe 
 
 Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension.
 
-Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function CheckPasswordAndInitializeSession, though that certainly violates the “Do one thing” rule.
+Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function `CheckPasswordAndInitializeSession`, though that certainly violates the “Do one thing” rule.
 
 A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. 
 
