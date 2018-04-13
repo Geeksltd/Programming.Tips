@@ -78,34 +78,56 @@ public Timesheet CreateDailyTimesheet(Employee employee)
 }
 ```
 
-Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month!
-Micro abstractions 
-...Paymon to write 
-Do One Thing
-The following advice has appeared in one form or another for 30 years or more.
-FUNCTIONS SHOULD DO ONE THING.
-THEY SHOULD DO IT WELL.
-THEY SHOULD DO IT ONLY.
-But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
-It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body. 
-When we say a method should do one thing, what it really means is that it should do one thing in one level of abstraction. As part of the method body it can invoke other functions and run steps that are one level below the stated name of the function. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction.
+Avoid returning arbitrary values from command methods. For example your CreateDailyTimesheet() must not return a decimal value to represent the total hours worked in a month! <br/>
+
+<h3> Micro abstractions </h3> 
+...Paymon to write <br/>
+
+<h4> Do One Thing </h4>
+
+The following advice has appeared in one form or another for 30 years or more. <br/>
+
+<strong>
+    FUNCTIONS SHOULD DO ONE THING. <br/>
+    THEY SHOULD DO IT WELL. <br/>
+    THEY SHOULD DO IT ONLY. <br/>
+</strong>
+
+But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things? <br/>
+
+It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body. <br/>
+
+When we say a method should do one thing, what it really means is that it should do <strong> one thing in one level of abstraction </strong>. As part of the method body it can invoke other functions and run steps that are <strong> one level below the stated name of the function </strong>. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction. <br/>
+
 To know if a function is doing more than “one thing”  try to extract another function from one or a bunch of its statements and give it a sensible name. Then think whether this new function (concept) is:
-A level of abstraction below the original method; or
-At the same level as the original one, merely a restatement of its implementation. 
-Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections. 
-One Level of Abstraction per Function
-In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. 
-Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function.
-Reading Code from Top to Bottom: The Stepdown Rule
-Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule.
-To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. 
-To do A we do B and then C. 
-To do B, if E we do F and otherwise we do G
-To determine if E, we …
-To do F we …
-To do G we...
-To do B we…
-To do C we…
+<ul>
+    <li>  A level of abstraction below the original method; or </li>
+    <li> At the same level as the original one, merely a restatement of its implementation. </li>
+</ul>
+<br/>
+
+<strong> Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections. </strong> <br/>
+
+<h3> One Level of Abstraction per Function </h3>
+
+In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. <br/>
+
+Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function. <br/>
+
+<h4> Reading Code from Top to Bottom: The Stepdown Rule </h4> 
+Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule. <br/>
+
+To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. <br/>
+<ul>
+    <li>To do A we do B and then C. </li>
+    <li> To do B, if E we do F and otherwise we do G </li>
+    <li> To determine if E, we … </li>
+    <li> To do F we … </li>
+    <li> To do G we... </li>
+    <li> To do B we… </li>
+    <li> To do C we… </li>
+</ul> <br/> 
+
 
 Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
 Dependent methods: If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.
