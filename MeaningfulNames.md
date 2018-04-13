@@ -14,11 +14,12 @@ Names should reveal intent. The name of a variable, function, or class, should a
 ```int d; // elapsed time in days ```<br/>
 
 The name d reveals nothing. It does not evoke a sense of elapsed time, nor of days. We should choose a name that specifies what is being measured and the unit of that measurement: <br/>
-```int elapsedTimeInDays; 
+```
+int elapsedTimeInDays; 
 int daysSinceCreation; 
 int daysSinceModification; 
-int fileAgeInDays;```
-
+int fileAgeInDays;
+```
 <br/> Choosing names that reveal intent make it easier to understand and change code.<br/> 
 
 <strong> Avoid Disinformation </strong><br/>
