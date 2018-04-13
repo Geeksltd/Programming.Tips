@@ -54,7 +54,9 @@ Noise words are redundant. For example: </br>
    <li> How are <strong> NameString </strong> or <strong> strName </strong> or <strong> m_Name </strong> any better than simply Name? </li>
    <li> Imagine finding one class named <strong> Customer </strong> and another named <strong> CustomerObject </strong>. What would you understand as the distinction? </li> 
 </ul> <br/>
-<strong> Use Pronounceable Names </strong> <br/>
+
+### Use Pronounceable Names
+
 If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. “Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?” <br/>
 This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms. <br/><br/> 
 <strong> Class Names </strong> <br/>
@@ -64,7 +66,8 @@ This matters because programming is a social activity. Instead of made-up words 
    <li> A class name should not be a verb, adjective or adverb. </li>
    <li> Also avoid words that are too broad like Manager, Processor, Data, or Info in the name of a class. </li>
 </ul>
-<strong> Method Names </strong> <br/>
+
+## Method Names
 Methods should have verb or verb phrase names like Save, PostPayment, DeletePage, IsXyz, CanXyz, HasXyz. You will learn more details later. For casting in particular, you can use ToXyz or AsXyz. <br/> 
 
 ### Add Meaningful Context
