@@ -8,7 +8,7 @@ Methods should be short and small. I mean really small. How short should they be
 
 Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code.
 
-## Command Query Separation (CQS) Law
+## Command/Query Separation
 
 Methods should either do something or answer something, but not both. Either your method should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
 
@@ -23,7 +23,6 @@ public bool CanSomething() { ... }
 public bool ExpiresOn(...) { ... }
 public bool RelatesTo(...) { ... }
 public bool CaresFor(...) { ... }
-
 ```
 
 Avoid command-like verbs for these. For instance avoid a Boolean method named `Validate()` or `Submit()`, etc.
@@ -86,31 +85,6 @@ Avoid returning arbitrary values from command methods. For example your `CreateD
 
 ## Micro abstractions
 
-### Do one thing
-
-The following advice has appeared in one form or another for 30 years or more:
-
-> Methods should do one thing, do it well, and do it only.
-
-But what is the meaning of *“one thing”*? Of course a method can often have multiple statements. It can perform boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
-
-It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body.
-
-When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other methods and run steps that are **one level below the stated name of the method**. In that case the method is doing one thing. After all, the reason we write methods is to decompose a larger concept (i.e, the name of the method) into a set of steps at the next (lower) level of abstraction.
-
-To know if a method is doing more than “one thing”  try to extract another method from one or a bunch of its statements and give it a sensible name. Then think whether this new method (concept) is:
-
-- A level of abstraction below the original method; or
-- At the same level as the original one, merely a restatement of its implementation.
-
-> **Methods that do one thing cannot be reasonably divided into sections. They don’t need `#Region` blocks or headline comments to divide the implementation into sections.**
-
-### One level of abstraction per method
-
-In order to make sure our methods are doing “one thing,” we need to make sure that the statements within our methods are all at the same level of abstraction.
-
-Mixing levels of abstraction within a method is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the method.
-
 #### Reading Code from Top to Bottom: The Stepdown Rule
 
 Code should read like a top-down narrative. Every method should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of methods. I call this The Stepdown Rule.
@@ -150,39 +124,6 @@ Think of a well-written newspaper article. You read it vertically.
 - Detail should increase as we move downward, until at the end we find the lowest level methods and details in the source file.
 
 Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
-
-### Switch Statements vs Polymorphism
-
-It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:
-
-```c#
-public decimal CalculatePay()
-{     
-     switch (this.EmployeeType)
-     {       
-              case COMMISSIONED:
-                   return CalculateCommissionedPay();
-              case HOURLY:
-                  return CalculateHourlyPay();
-              case SALARIED:
-                  return CalculateSalariedPay();
-              default:
-                 throw new NotSupportedException();
-    }
-}
-```
-
-Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable.
-
-However, if you find that a switch statement on an employee’s type is being repeated, for example for:
-
-- `IsPayday(Date date)`
-- `DeliverPay(decimal pay)`
-- ...
-
-Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead.
-
-In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the `CalculatePay()`, `IsPayday()`, and `DeliverPay()` methods as abstract (without implementation). And each of the child classes, ie `CommissionedEmployee`, `HourlyEmployee` and `SalariedEmployee` will implement it.
 
 ### Naming method arguments
 
