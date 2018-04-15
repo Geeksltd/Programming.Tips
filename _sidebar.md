@@ -23,4 +23,6 @@
     * [Creating extension methods](docs/methods/extension-methods.md)    
 
 * Naming
-    * [Naming instance methods](docs/naming/instance-methods.md)
+    * [Method naming formula](docs/naming/method-name-formula.md)
+    * [Command/Query Seperation](docs/naming/method-cqs.md)
+    
