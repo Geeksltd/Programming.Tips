@@ -1,10 +1,10 @@
 # Exception Handling
 
-&nbsp;&nbsp; When you program you should always be wary of errors. Input can be abnormal and devices can fail. Things can go wrong, and when they do, your code should do its part to help the situation.
+When you program you should always be wary of errors. Input can be abnormal and devices can fail. Things can go wrong, and when they do, your code should do its part to help the situation.
 
 ## Use Try-Catch-Finally
 
-&nbsp;&nbsp; Try/catch/finally blocks define a scope within your program. When you execute code in the try section, you are stating that execution can abort at any point and then resume at the catch.
+Try/catch/finally blocks define a scope within your program. When you execute code in the try section, you are stating that execution can abort at any point and then resume at the catch.
 
 Ideally try blocks should behave like transactions. Your catch/finally has to leave your program in a consistent state, no matter what happens in the try. Always think and ask yourself:
 
@@ -59,7 +59,7 @@ In this example if the validation line didn’t exist you would just get a null 
 
 ## Exceptions vs Error codes
 
-&nbsp;&nbsp; Returning error codes from command functions is an obsolete technique when your language supports proper exception handling blocks.
+Returning error codes from command functions is an obsolete technique when your language supports proper exception handling blocks.
 
 Error code could be:
 
