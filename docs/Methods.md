@@ -2,7 +2,7 @@
 
 ## Size matters
 
-&nbsp;&nbsp; The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
+The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
 
 In fact, you cannot directly aim for a particular size. What you can do, is to aim to break larger abstractions into smaller ones. Go for micro abstractions and turn each one into a method with a name that represents that abstraction. 
 
@@ -10,7 +10,7 @@ Find the smallest piece of logic that you can give a name to. This is an art. On
 
 ## Command Query Separation (CQS) Law
 
-&nbsp;&nbsp; Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
+Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
 
 ### Name of Query functions (Boolean)
 
@@ -231,14 +231,11 @@ class TradingService
 
 In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.”
 
-
 But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be **buyer** and **seller**.
-
 
 **In other words, we’re not saying that argument must never be named after their type. But rather, that their type is not what determines their name, even though the two can be the same in many occasions.**
 
-
-Consider another example: 
+Consider another example:
 
 ```c#
 public void UpdatePrice(Product product, decimal value)
@@ -288,11 +285,13 @@ What method name would be best? Let’s try a few different choices, from the po
 Let’s immediately rule out the last option. Although it is the most clear and descriptive option, but it also is verbose and ignores the fact that there is a context that mustn’t be repeated unnecessarily. The “ToBeCheckedOut” part is redundant. Not only is it already implied anyway, but also it’s irrelevant to the method’s responsibility.
 
 #### The instance context
+
 &nbsp;&nbsp; The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the **“ToBasket”** part is is redundant.
 
 As a rule of thumb, your instance methods should almost never add the defining class’s name to the end of the method.
 
 #### Arguments in the method name
+
 &nbsp;&nbsp; So far we have ruled out some of the name options of this method, and are left with:
 
   - `myBasket.Add(product, 3)`
@@ -307,7 +306,7 @@ There are cases where you must add the argument name to the method name, and tha
 
 In this example, what if you had another method that added a percentage of the whole inventory to the basket? Then having simply `AddProduct(product, 3)` would be ambiguous. Are we adding 3 as quantity or as percentage? To disambiguate you’d need to explicitly specify that to the method name. 
 
-If you didn’t have an ambiguity though, it will be optional to add the name on. 
+If you didn’t have an ambiguity though, it will be optional to add the name on.
 
 **When it is optional**
 
@@ -336,19 +335,20 @@ Again let’s consider 3 name choices, and consider them from the client code’
   - `item..UpdateDeveloperEstimation(myTimeSpan)`
 
 
-Which option would be the best name? 
+Which option would be the best name?
   
    - The first one is lacking sufficient context.
-      - When you see that invocation, the context tells you that a task is being updated to a new time value. 
+      - When you see that invocation, the context tells you that a task is being updated to a new time value.
       - But it doesn’t tell you the meaning of that time value. Is it the estimation date?
-      - Is it the actual time it took to complete? …         
+      - Is it the actual time it took to complete? …
 
    - The second example gives you a clearer picture. It’s the estimation of the task being updated, as opposed to any other timespan data of the task.
-   - The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation. 
+   - The third one is adding some more context information. It’s saying it’s the Developer estimation, as opposed to, say, client’s estimation.
 
 The right choice between the second and the third item depends on  **whether in the domain of the project there is any ambiguity.** If in that application the only estimation being recorded is that of the developer, then the best name will be simply `UpdateEstimation()` in order to avoid stating the Obvious.
 
 #### Preposition: Further clarify the argument’s role
+
 &nbsp;&nbsp; When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method.
 
 In the above example, you could use the “To” preposition and add it to the method name:
@@ -395,31 +395,30 @@ Reducing the number of arguments by creating objects out of them may seem like c
 
 ```c#
 string.Format("{0} worked {1:F2} hours.", name, hours);
-``` 
+```
 
 If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#.
 
-
-
 ### Creating Extension methods
-&nbsp;&nbsp; C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class. 
+
+&nbsp;&nbsp; C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class.
 
 #### Enum methods
 
 &nbsp;&nbsp; Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
 
-
 #### General applicability
 
-&nbsp;&nbsp; You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing.
+You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing.
 
 #### Competing with existing methods
-&nbsp;&nbsp; Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called.
 
+Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called.
 
 Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type.
 
 #### Extension method resolution
+
 &nbsp;&nbsp; For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method.
 
 If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.
@@ -427,10 +426,10 @@ If multiple extension methods with the same signature are found (from different 
 #### Avoid Side Effects
 
 &nbsp;&nbsp; Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
-  - Fields or properties of its own class.
-  - Fields or properties of the parameters passed into the function
-  - Global stuff such as database, user cookies, …
 
+- Fields or properties of its own class.
+- Fields or properties of the parameters passed into the function
+- Global stuff such as database, user cookies, …
 
 Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example.
 
@@ -455,17 +454,18 @@ The side effect is the call to `Session.initialize()`. The CheckPassword functio
 
 That is, `CheckPassword()` can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling.
 
-**Temporal coupling**
+### Temporal coupling
 
 Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension.
 
 Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function `CheckPasswordAndInitializeSession`, though that certainly violates the “Do one thing” rule.
 
-A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initialising the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction. 
+A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initializing the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction.
 
 ### You are a storyteller 
+
 &nbsp;&nbsp; When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
 
 **The art of programming is, and has always been, the art of language design.**
 
-Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of C# (as a host language) to construct a much richer and more expressive language that can be used to tell that story. 
+Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of C# (as a host language) to construct a much richer and more expressive language that can be used to tell that story.
