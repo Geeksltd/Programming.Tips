@@ -2,7 +2,7 @@
 
 ## Different nature of classes
 
-&nbsp;&nbsp; Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
+Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
 
 Classes can be categorized differently depending on our perspective. Here we offer a few examples of categories of classes. It’s not an exact science, and the distinction is not 100% clear. But thinking in these terms help us organize our thoughts and make better sense of the programming best practices. Moreover, related tips at the end of each part will help us come up with better design and architecture.
 
