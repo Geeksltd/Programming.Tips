@@ -1,6 +1,4 @@
-# Classes
-
-## Different nature of classes
+# Different nature of classes
 
 Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
 
