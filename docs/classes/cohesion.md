@@ -4,7 +4,7 @@ A class had maximum cohesion when every class field is used in every method. It 
 
 Imagine if you create a graph for your class where each method and field is a node. You then draw a line from each method to the fields or other methods that it uses. If you end up with a fully connected graph, you have a cohesive class. But if you end up with isolated islands, you have an incohesive class.
 
-![Cohesion](_media/Cohesion.png)
+![Cohesion](../_media/Cohesion.png)
 
 As a rule of thumb, high cohesion is good, as it means that the methods and fields of the class are co-dependent and belong together as a logical whole (right side).
 
