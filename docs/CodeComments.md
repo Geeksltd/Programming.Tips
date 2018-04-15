@@ -6,7 +6,7 @@ When you find yourself in a position where you need to write a comment, think it
 
 ## Comments lie
 
-&nbsp;&nbsp; Comments lie. Not always, and not intentionally, but too often nevertheless. Code changes and evolves. Unfortunately the comments don’t always keep up and become orphaned blurbs of ever decreasing accuracy.
+Comments lie. Not always, and not intentionally, but too often nevertheless. Code changes and evolves. Unfortunately the comments don’t always keep up and become orphaned blurbs of ever decreasing accuracy.
 
 You might be thinking “programmers should be disciplined enough to keep the comments up to date”. I agree, they should. But they won’t.
 
@@ -14,7 +14,7 @@ Inaccurate comments are worse than no comments at all. They mislead, set expecta
 
 ### Comments Do Not Make Up for Bad Code
 
-&nbsp;&nbsp; One of the more common motivations for writing comments is bad code. We write a module and we know it is confusing and disorganized. We know it’s a mess.
+One of the more common motivations for writing comments is bad code. We write a module and we know it is confusing and disorganized. We know it’s a mess.
 
 So we say to ourselves, “Ooh, I’d better comment that!”
 
@@ -22,7 +22,7 @@ No! You’d better clean it!
 
 ### Explain Yourself in Code
 
-&nbsp;&nbsp; Which would you rather see? 
+Which would you rather see? 
 
 ```c#
 // Check to see if the employee is eligible for full benefits 
@@ -45,7 +45,7 @@ Often you need less than a minute to think and explain your intent in code. In m
 
 #### Informative Comments
 
-&nbsp;&nbsp; It is sometimes useful to provide basic information with a comment. For example:
+It is sometimes useful to provide basic information with a comment. For example:
 
 ```c#
 // format matched kk:mm:ss EEE, MMM dd, yyyy
@@ -89,11 +89,11 @@ assertTrue(a.compareTo(b) == -1);   // a < b
 
 #### Warning of Consequences
 
-&nbsp;&nbsp; Sometimes it is useful to warn other programmers about certain consequences. For example, a comment can specify whether a class or method is thread safe.
+Sometimes it is useful to warn other programmers about certain consequences. For example, a comment can specify whether a class or method is thread safe.
 
 #### TODO Comments
 
-&nbsp;&nbsp; It is sometimes reasonable to leave reminders and action notes in the form of `// TODO` comments. TODOs are jobs that you think should be done, but for some reason can’t do at the moment. For example:
+It is sometimes reasonable to leave reminders and action notes in the form of `// TODO` comments. TODOs are jobs that you think should be done, but for some reason can’t do at the moment. For example:
 
 ```c#
 // TODO: We expect this to be removed when ...
@@ -107,7 +107,7 @@ Visual Studio can locate all the TODO comments and show them as messages in the 
 
 #### XML Docs vs Comments
 
-&nbsp;&nbsp; When the comments relate to a class, method or a method argument, then write the comments as XML documentation. This allows callers to immediately notice them using intellisense without having to look at your code.
+When the comments relate to a class, method or a method argument, then write the comments as XML documentation. This allows callers to immediately notice them using intellisense without having to look at your code.
 
 ```c#
 /// <summary> comments here </summary>
@@ -135,7 +135,7 @@ Such comments will be less precise than the code and, when they get out of sync 
 
 #### Mandated Comments
 
-&nbsp;&nbsp; Some companies have a rule that says that every function must have xml documentation, or every variable must have a comment. That’s plain silly for the reasons explained above.
+Some companies have a rule that says that every function must have xml documentation, or every variable must have a comment. That’s plain silly for the reasons explained above.
 
 Unfortunately, there is an evil warning code 1591 in Visual Studio which kicks in when you enable XML documentation file generation in the build settings of a project. It prompts you to add xml comments to everything that is public. Do not obey that. Instead, suppress the rule code in the project build settings. 
 
@@ -143,7 +143,7 @@ Unfortunately, there is an evil warning code 1591 in Visual Studio which kicks i
 
 #### Replace comments with methods or variables
 
-&nbsp;&nbsp; Consider the following code:
+Consider the following code:
 
 ```c#
 // Can the order be submitted?
