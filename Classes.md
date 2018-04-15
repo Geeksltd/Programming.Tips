@@ -1,17 +1,17 @@
 # Classes
 
 ## Different nature of classes
-Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
+&nbsp;&nbsp; Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
 
 Classes can be categorized differently depending on our perspective. Here we offer a few examples of categories of classes. It’s not an exact science, and the distinction is not 100% clear. But thinking in these terms help us organise our thoughts and make better sense of the programming best practices. Moreover, related tips at the end of each part will help us come up with better design and architecture. 
 
 ### Entity classes
-One of the early activities in enterprise application projects is a process called data modeling. During that process business concepts, data elements and relationship between them are defined, and such data elements are referred to as Entities. Also, Entities, often are objects that have an identity  that stays unchanged over time (e.g. a Guid property named ID).
+&nbsp;&nbsp; One of the early activities in enterprise application projects is a process called data modeling. During that process business concepts, data elements and relationship between them are defined, and such data elements are referred to as Entities. Also, Entities, often are objects that have an identity  that stays unchanged over time (e.g. a Guid property named ID).
 
 Typically Entity classes are real objects and encapsulate data and behaviour. As they are indeed abstractions of real world concepts, the programming best practices fully apply to entity classes.
 
 ### DTO classes (Data Transfer Objects)
-A Data Transfer Object is an object that is used to encapsulate data, and send it from one subsystem of an application to another. DTO classes typically have data fields and properties, but no methods or events. They are dumb classes. 
+&nbsp;&nbsp; A Data Transfer Object is an object that is used to encapsulate data, and send it from one subsystem of an application to another. DTO classes typically have data fields and properties, but no methods or events. They are dumb classes. 
 
 A common use case for DTOs is to create ViewModel classes in ASP.NET Mvc applications. As the name suggests, a ViewModel is the model for the view. Every view (e.g. a cshtml file) needs data to render itself,  which it receives from the Controller that received the http request in the first place.
 
@@ -19,7 +19,7 @@ Another common use case for DTOs is in systems integration and APIs. Since they 
 
 #### Value objects
 
-Value objects are instances of classes that are immutable and distinguishable only by value of their properties/attributes. That is, unlike an Entity, which is known by its unique identifier, a value object is only identified by the value of its properties. Two entity objects are equal if they have equal ids, on the other hand, two Value Objects are equal if value of all their properties are exactly equal. 
+&nbsp;&nbsp; Value objects are instances of classes that are immutable and distinguishable only by value of their properties/attributes. That is, unlike an Entity, which is known by its unique identifier, a value object is only identified by the value of its properties. Two entity objects are equal if they have equal ids, on the other hand, two Value Objects are equal if value of all their properties are exactly equal. 
 
 For example, an instance of a Date class can be a value object if its properties cannot be modified after creation and does not include an Id attribute:
 
@@ -44,28 +44,28 @@ class Date {
 
  ```
 #### Service classes
-In DDD, the business layer consists of two type of objects; Domain Model entities and pieces of domain that don’t logically fit into any of those entities. Logically related behaviors that don’t fit into Enitites group together and shape domain services.
+&nbsp;&nbsp; In DDD, the business layer consists of two type of objects; Domain Model entities and pieces of domain that don’t logically fit into any of those entities. Logically related behaviors that don’t fit into Enitites group together and shape domain services.
  
 Avoid Domain Services as much as you can! Too much separation of Data in Entities and behavior in Services will cause an anti-pattern called Anemic Domain Model in which Entities are no more than a set of getters and setters (more or less DTO objects) and behaviors and domain logic are entirely moved into service classes while they should have been part of the domain model entities.
  
 #### Helper classes
-Also known as Utility classes, are often classes that don’t have a state of their own, consist only of static methods (so client code doesn’t need creating an instance of the class to access those methods), are used by many other classes. A good example is Convert class in .net (e.g Convert.ToInt32). 
+&nbsp;&nbsp; Also known as Utility classes, are often classes that don’t have a state of their own, consist only of static methods (so client code doesn’t need creating an instance of the class to access those methods), are used by many other classes. A good example is Convert class in .net (e.g Convert.ToInt32). 
  
 #### Repository classes
-Repository is a layer that mediates between domain model and data access layer. It hides the complexity of loading data from one or possibly multiple sources and mapping them to objects that can be used by the domain model. 
+&nbsp;&nbsp; Repository is a layer that mediates between domain model and data access layer. It hides the complexity of loading data from one or possibly multiple sources and mapping them to objects that can be used by the domain model. 
  
 #### Orchestration classes
 
 
 ## Framework implementation classes
 
-What is a framework anyway? Wikipedia defines it as: 
+&nbsp;&nbsp; What is a framework anyway? Wikipedia defines it as: 
 
 
 _An abstraction in which a software that provides generic functionality can be selectively changed by additional user-written code, in order to provide an application-specific software. A framework is different from a library in that the overall program's flow of control is not dictated by the caller, but by the framework. A user can extend the framework, usually by selective overriding._
 
 ### Example: ASP.NET Controllers
-ASP.NET Mvc is a framework. If you just create a random class somewhere in an ASP.NET application, the framework will have no idea what it is or how to use it. Instead, you must implement very specific classes in very specific ways.
+&nbsp;&nbsp; ASP.NET Mvc is a framework. If you just create a random class somewhere in an ASP.NET application, the framework will have no idea what it is or how to use it. Instead, you must implement very specific classes in very specific ways.
 
 For example ASP.NET recognises a concept named Controller. For your application to benefit from that concept, you should create classes that inherit from a special class in the framework called System.Web.Mvc.Controller. In other words you create a Controller Class in your project.
 
@@ -78,12 +78,12 @@ Unlike other classes that you would normally design, you have very limited freed
 
 
 ### Framework implementation classes vs Abstraction classes
-Controller is not the only example of a “Framework implementation” class. Unit Test classes, WPF pages, Http modules and many other such classes also have the same nature.
+&nbsp;&nbsp; Controller is not the only example of a “Framework implementation” class. Unit Test classes, WPF pages, Http modules and many other such classes also have the same nature.
 
 Most programming best practices and guidelines are primarily applicable to the classes that represent an abstraction. But, your framework implementation classes are often not real abstractions of concepts in your project’s domain. As a result, commonly you may find a general rule to not make sense or feel like it’s not applicable in your case. For example, the method naming rules are often inappropriate for naming unit test methods. 
 
 ## Smart vs Dumb classes
-It’s essential that you understand the difference between smart and dumb objects: 
+&nbsp;&nbsp; It’s essential that you understand the difference between smart and dumb objects: 
 
 
   - Smart objects hide their data behind abstractions and expose functions that operate on that data.
@@ -159,7 +159,7 @@ Another scenario where dumb objects are preferred is when you have completely al
 
 ## Classes Should Be Small
 
-Just like methods, classes should be small. But what is small? To measure “size”: 
+&nbsp;&nbsp; Just like methods, classes should be small. But what is small? To measure “size”: 
 
   - For methods, we simply count code lines. 
   - For classes we count responsibilities.
@@ -177,18 +177,18 @@ The more ambiguous the class name, the more likely it has too many responsibilit
 
 ## The Single Responsibility Principle
 
-The Single Responsibility Principle (SRP) states that a class should have one specific purpose, one responsibility, one “reason to change”. It basically means that **when designing a system, you should try to identify responsibilities across the system. Then for each one, define a clear abstraction, give it a good name and define a class for it.**
+&nbsp;&nbsp; The Single Responsibility Principle (SRP) states that a class should have one specific purpose, one responsibility, one “reason to change”. It basically means that **when designing a system, you should try to identify responsibilities across the system. Then for each one, define a clear abstraction, give it a good name and define a class for it.**
 
 SRP is a very important concept in object oriented design. Yet unfortunately it is too often violated, and we regularly encounter classes that do too many things. Why? Because getting software to work, and making it clean, are two different activities. It’s perfectly normal that you first focus on fulfilling a business requirement and writing code that works. But resist the temptation to move on to the next task straight away. Instead, take a step back and break the overstuffed classes into decoupled units with single responsibilities.
 
 Some developers fear that a large number of small classes makes it harder to understand the bigger picture. But that’s a fallacy. There is just as much to learn in the system with a few large classes. The question is: **Do you want your tools organized into toolboxes with many small drawers each containing well-labeled components? Or do you want a few drawers that you just toss everything into?**
 
 ### Example: Data mapping
-When working with multiple layers, we often need to convert different types of data transfer objects. So, a mapping is required. Do not put the logic of mapping between two objects inside any of the two. No class needs to know about existence of the other. Every class has its responsibility. Adding the mapping responsibility to it, means breaking the SRC principle. Instead, create a separate class responsible for mapping between the two.
+&nbsp;&nbsp; When working with multiple layers, we often need to convert different types of data transfer objects. So, a mapping is required. Do not put the logic of mapping between two objects inside any of the two. No class needs to know about existence of the other. Every class has its responsibility. Adding the mapping responsibility to it, means breaking the SRC principle. Instead, create a separate class responsible for mapping between the two.
 
 
 ## Cohesion
-A class had maximum cohesion when every class field is used in every method. It has the minimum cohesion when each class field is only used by a single method. Of course, most classes fall in between.
+&nbsp;&nbsp; A class had maximum cohesion when every class field is used in every method. It has the minimum cohesion when each class field is only used by a single method. Of course, most classes fall in between.
 
 Imagine if you create a graph for your class where each method and field is a node. You then draw a line from each method to the fields or other methods that it uses. If you end up with a fully connected graph, you have a cohesive class. But if you end up with isolated islands, you have an incohesive class.
 
@@ -199,7 +199,7 @@ But when cohesion is low, and you have unconnected islands, it’s as if you are
 
 ### Breaking large methods via Cohesion
 
-Imagine the following scenario:
+&nbsp;&nbsp; Imagine the following scenario:
 
   - You have a large method with many variables and lots of code.
   - You want to extract one small part of that method into a separate method.
