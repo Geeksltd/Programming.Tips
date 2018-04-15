@@ -12,3 +12,9 @@
     * [Smart vs Dumb classes](docs/classes/smart-v-dumb.md)
     * [Single Responsibility Principle](docs/classes/single-responsibility.md)
     * [Class cohesion](docs/classes/cohesion.md)
+
+* Architecture
+  
+* Methods
+    * [Do one thing](docs/methods/one-thing.md)
+    * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
