@@ -20,10 +20,7 @@ This matters because programming is a social activity. Instead of made-up words 
 - It should be singular not plural.
 - A class name should not be a verb, adjective or adverb.
  - Also avoid words that are too broad like `Manager`, `Processor`, `Data`, or `Info` in the name of a class.
-
-## Method Names
-
-Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
+ 
 
 ### Add Meaningful Context
 
