@@ -4,13 +4,13 @@ Typical programming courses teach you what classes are and how to use them in ge
 
 Classes can be categorized differently depending on our perspective. Here we offer a few examples of categories of classes. It’s not an exact science, and the distinction is not 100% clear. But thinking in these terms help us organize our thoughts and make better sense of the programming best practices. Moreover, related tips at the end of each part will help us come up with better design and architecture.
 
-### Entity classes
+## Entity classes
 
 One of the early activities in enterprise application projects is a process called data modeling. During that process business concepts, data elements and relationship between them are defined, and such data elements are referred to as Entities. Also, Entities, often are objects that have an identity  that stays unchanged over time (e.g. a `GUID` property named ID).
 
 Typically Entity classes are real objects and encapsulate data and behavior. As they are indeed abstractions of real world concepts, the programming best practices fully apply to entity classes.
 
-### DTO classes (Data Transfer Objects)
+## DTO classes (Data Transfer Objects)
 
 A Data Transfer Object is an object that is used to encapsulate data, and send it from one subsystem of an application to another. DTO classes typically have data fields and properties, but no methods or events. They are dumb classes.
 
@@ -18,7 +18,7 @@ A common use case for DTOs is to create ViewModel classes in ASP.NET Mvc applica
 
 Another common use case for DTOs is in systems integration and APIs. Since they are essentially a structured bag of data, they are suitable for serialization (e.g. as Json) and transferring across the network.
 
-#### Value objects
+### Value objects
 
 Value objects are instances of classes that are immutable and distinguishable only by value of their properties/attributes. That is, unlike an Entity, which is known by its unique identifier, a value object is only identified by the value of its properties. Two entity objects are equal if they have equal ids, on the other hand, two Value Objects are equal if value of all their properties are exactly equal.
 
@@ -45,21 +45,21 @@ class Date {
 
  ```
 
-#### Service classes
+### Service classes
 
 In DDD, the business layer consists of two type of objects; Domain Model entities and pieces of domain that don’t logically fit into any of those entities. Logically related behaviors that don’t fit into Entities group together and shape domain services.
 
 Avoid Domain Services as much as you can! Too much separation of Data in Entities and behavior in Services will cause an anti-pattern called Anemic Domain Model in which Entities are no more than a set of getters and setters (more or less DTO objects) and behaviors and domain logic are entirely moved into service classes while they should have been part of the domain model entities.
 
-#### Helper classes
+### Helper classes
 
 Also known as Utility classes, are often classes that don’t have a state of their own, consist only of static methods (so client code doesn’t need creating an instance of the class to access those methods), are used by many other classes. A good example is Convert class in .net (e.g Convert.ToInt32). 
 
-#### Repository classes
+### Repository classes
 
 Repository is a layer that mediates between domain model and data access layer. It hides the complexity of loading data from one or possibly multiple sources and mapping them to objects that can be used by the domain model.
 
-#### Orchestration classes
+### Orchestration classes
 
 ## Framework implementation classes
 
