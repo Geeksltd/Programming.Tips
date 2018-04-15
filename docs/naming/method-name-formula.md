@@ -1,4 +1,4 @@
-# Naming instance methods
+# Method naming formula
 
 A method's name should follow 3 main rules:
 
