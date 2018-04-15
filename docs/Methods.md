@@ -83,68 +83,7 @@ public Timesheet CreateDailyTimesheet(Employee employee)
 
 Avoid returning arbitrary values from command methods. For example your `CreateDailyTimesheet()` must not return a decimal value to represent the total hours worked in a month!
 
-## Micro abstractions
 
-
-### Naming method arguments
-
-Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after.
-
-To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:
-
-   _**In the context of {method name}, this {argument type} is
-     the {argument name}.**_
-
-Consider the following example from a chat application:
-
-```c#
-class ChatSession
-{
-    ...
-    public void SendMessage(User user, string message)
-    {
-       ...
-    }
-}
-```
-
-The statement sentence would be: *“In the context of SendMessage, this user instance is the user.”*
-
-If you heard that, you’d be immediately asking *“what do you mean by user? The user who sends, or the one who receives the message?”*.
-
-The user argument here is named after its type, which is a very common thing among programmers. However, *“user”* is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument.
-
-Consider another example:
-
-```c#
-class TradingService
-{
-    ...
-    public void ExecuteTransaction(Company company1, Company company2, Product product)
-    {
-       ...
-    }
-}
-```
-
-In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.”
-
-But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be **buyer** and **seller**.
-
-**In other words, we’re not saying that argument must never be named after their type. But rather, that their type is not what determines their name, even though the two can be the same in many occasions.**
-
-Consider another example:
-
-```c#
-public void UpdatePrice(Product product, decimal value)
-{
-     ...
-}
-```
-
-Although the purpose of **`value`** may not be ambiguous to you, one could still be asking, is this value thing the new price, or the increase in the price? Furthermore, it doesn’t form the best statement sentence: In the context of UpdatePrice, this decimal instance is the value.
-
-If, instead, you named it after its **true role** in that context, which would be **newPrice**, then not only would the statement sentence make perfect sense, but also it would make the code immediately disambiguous.
 
 ### Naming instance methods
 
@@ -296,30 +235,6 @@ string.Format("{0} worked {1:F2} hours.", name, hours);
 ```
 
 If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type Array. Such array method arguments are decorated as params in C#.
-
-### Creating Extension methods
-
-C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class.
-
-#### Enum methods
-
-Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
-
-#### General applicability
-
-You should only create an extension method on a type when the method concept is applicable and meaningful for all instances of that type. Remember that they show up in intellisense. If an extension method isn’t meaningful as a general concept defined on that type, it can be confusing.
-
-#### Competing with existing methods
-
-Extension methods cannot be used to override existing methods. An extension method with the same name and signature as an instance method will not be called.
-
-Do not create an extension method for a class that you own. Favour normal instance methods when you own the source of the type.
-
-#### Extension method resolution
-
-For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method.
-
-If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.
 
 #### Avoid Side Effects
 
