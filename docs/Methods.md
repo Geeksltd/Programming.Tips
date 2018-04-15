@@ -12,7 +12,7 @@ Find the smallest piece of logic that you can give a name to. This is an art. On
 
 Methods should either do something or answer something, but not both. Either your method should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
 
-### Name of Query methods (Boolean)
+### Naming boolean query methods
 
 Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are:
 
@@ -28,7 +28,7 @@ public bool CaresFor(...) { ... }
 
 Avoid command-like verbs for these. For instance avoid a Boolean method named `Validate()` or `Submit()`, etc.
 
-### Name of Query methods (non Boolean)
+### Naming non-boolean query methods
 
 If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something.
 
@@ -54,7 +54,7 @@ public void SlowlyProcess() { ... }
 
 The last example above starts with an adverb. A better name for it would be `ProcessSlowly()`.
 
-### Name of Command methods
+### Naming command methods
 
 Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
 
@@ -86,7 +86,7 @@ Avoid returning arbitrary values from command methods. For example your `CreateD
 
 ## Micro abstractions
 
-### Do One Thing
+### Do one thing
 
 The following advice has appeared in one form or another for 30 years or more:
 
@@ -103,9 +103,9 @@ To know if a method is doing more than “one thing”  try to extract another m
 - A level of abstraction below the original method; or
 - At the same level as the original one, merely a restatement of its implementation.
 
-> **Methods that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
+> **Methods that do one thing cannot be reasonably divided into sections. They don’t need `#Region` blocks or headline comments to divide the implementation into sections.**
 
-### One Level of Abstraction per Method
+### One level of abstraction per method
 
 In order to make sure our methods are doing “one thing,” we need to make sure that the statements within our methods are all at the same level of abstraction.
 
@@ -457,11 +457,3 @@ Temporal coupling occurs when there's an implicit relationship between two, or m
 Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the method. In this case we might rename the method `CheckPasswordAndInitializeSession`, though that certainly violates the “Do one thing” rule.
 
 A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initializing the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction.
-
-### You are a storyteller 
-
-When developing any system, you are designing a language to describe the domain of that project. Methods are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
-
-**The art of programming is, and has always been, the art of language design.**
-
-Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of C# (as a host language) to construct a much richer and more expressive language that can be used to tell that story.
