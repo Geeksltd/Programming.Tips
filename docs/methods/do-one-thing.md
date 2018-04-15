@@ -15,11 +15,11 @@ Ideally methods should be between 1 to 5 lines. But this is of course not always
 > You cannot directly aim for a particular size. What you can do, is to aim to break **larger abstractions** into smaller ones.
 
 ## Micro-abstractions
-When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other methods and run steps that are **one level below the stated name of the method**. In that case the method is doing one thing.
+When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body, it can invoke other methods and run steps that are **one level below the stated name of the method**. In that case the method is doing one thing.
 
 After all, the reason we write methods is to decompose a larger concept (i.e, the name of the method) into a set of steps at the next (lower) level of abstraction.
 
-When refactoring your methods, go for **micro abstractions** and turn each one into a method with a name that represents that abstraction. 
+When refactoring your methods, go for **micro abstractions** and break it down into smaller abstractions. Turn each piece of code that relates to one concept, or one abstraction, into a method with a name that represents that abstraction.
 
 ## Is my method doing one thing?
 To know if a method is doing more than “one thing”  try to extract another method from one or a bunch of its statements and give it a sensible name. Then think whether this new method (concept) is:
