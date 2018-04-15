@@ -10,7 +10,7 @@
     * [Classes](docs/Classes.md)
     
 * Classes
-    * [Smart vs Dumb classes](classes/nature.md)
+    * [Different nature of classes](classes/nature.md)
     * [Smart vs Dumb classes](classes/smart-v-dumb.md)
     * [Single Responsibility Principle](classes/single-responsibility.md)
     * [Class cohesion](classes/cohesion.md)
