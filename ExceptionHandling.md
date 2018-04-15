@@ -1,8 +1,8 @@
 # Exception Handling
-When you program you should always be wary of errors. Input can be abnormal and devices can fail. Things can go wrong, and when they do, your code should do its part to help the situation.
+&nbsp;&nbsp; When you program you should always be wary of errors. Input can be abnormal and devices can fail. Things can go wrong, and when they do, your code should do its part to help the situation.
 
 ## Use Try-Catch-Finally
-Try/catch/finally blocks define a scope within your program. When you execute code in the try section, you are stating that execution can abort at any point and then resume at the catch.
+&nbsp;&nbsp; Try/catch/finally blocks define a scope within your program. When you execute code in the try section, you are stating that execution can abort at any point and then resume at the catch.
 
 Ideally try blocks should behave like transactions. Your catch/finally has to leave your program in a consistent state, no matter what happens in the try. Always think and ask yourself: 
 
@@ -14,7 +14,7 @@ Of course different types of exceptions can happen. C# allows you to catch each 
 In most cases, irrespective of the type of error you need to do some clean up action and re-throw the error with a bit of improved error message and context.
 
 ## Provide Context with Exceptions
-In C#, you can get a stack trace from any exception; however, a stack trace can’t tell you the intent of the operation that failed. 
+&nbsp;&nbsp; In C#, you can get a stack trace from any exception; however, a stack trace can’t tell you the intent of the operation that failed. 
 
 Stack trace shows you the stack of method calls to the point of failure. But it doesn’t reveal anything about the parameters, data fields and other context information.
 
@@ -22,7 +22,7 @@ Stack trace shows you the stack of method calls to the point of failure. But it 
 
 ## Validating method arguments
 
-The main purpose of validating arguments in methods is to inform the callers that they are using the method incorrectly. Therefore, this should be done only when the calling code is not in your control. The most common scenario is for when you are creating a public method in a library that is published for other developers.
+&nbsp;&nbsp; The main purpose of validating arguments in methods is to inform the callers that they are using the method incorrectly. Therefore, this should be done only when the calling code is not in your control. The most common scenario is for when you are creating a public method in a library that is published for other developers.
 
 **Is the caller in your control?**
 Callers of nonpublic methods are always in your control. Therefore, you should generally not validate arguments in private and internal methods. If you are creating a public method that is meant to be called only by another code that you also own, again it's unnecessary to validate arguments.
@@ -55,7 +55,7 @@ In this example if the validation line didn’t exist you would just get a null 
 
 ## Exceptions vs Error codes
 
-Returning error codes from command functions is an obsolete technique when your language supports proper exception handling blocks.
+&nbsp;&nbsp; Returning error codes from command functions is an obsolete technique when your language supports proper exception handling blocks.
 
 Error code could be:
 
