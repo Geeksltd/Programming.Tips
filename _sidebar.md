@@ -20,3 +20,4 @@
     * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
     * [The Stepdown Rule](docs/methods/stepdown-rule.md)
     * [Naming method arguments](docs/methods/argument-name.md)
+    * [Creating extension methods](docs/methods/extension-methods.md)
