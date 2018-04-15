@@ -134,7 +134,7 @@ Such comments will be less precise than the code and, when they get out of sync 
 
 Unfortunately, there is an evil warning code 1591 in Visual Studio which kicks in when you enable XML documentation file generation in the build settings of a project. It prompts you to add xml comments to everything that is public. Do not obey that. Instead, suppress the rule code in the project build settings. 
 
-![MandatedComments](/MandatedComments.png)
+![MandatedComments](/_media/MandatedComments.png)
 
 #### Replace comments with methods or variables
 
