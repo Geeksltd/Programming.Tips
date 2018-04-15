@@ -1,18 +1,18 @@
-# Methods (Functions)
+# Methods
 
 ## Size matters
 
-The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
+Methods should be short and small. I mean really small. How short should they be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
 
-In fact, you cannot directly aim for a particular size. What you can do, is to aim to break larger abstractions into smaller ones. Go for micro abstractions and turn each one into a method with a name that represents that abstraction. 
+> In fact, you cannot directly aim for a particular size. What you can do, is to aim to break **larger abstractions** into smaller ones. Go for **micro abstractions** and turn each one into a method with a name that represents that abstraction. 
 
 Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code.
 
 ## Command Query Separation (CQS) Law
 
-Functions should either do something or answer something, but not both. Either your function should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
+Methods should either do something or answer something, but not both. Either your method should change the state of an object (Command), or it should return some information about that object (Query). Doing both often leads to confusion and unintended side-effects.
 
-### Name of Query functions (Boolean)
+### Name of Query methods (Boolean)
 
 Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are:
 
@@ -28,7 +28,7 @@ public bool CaresFor(...) { ... }
 
 Avoid command-like verbs for these. For instance avoid a Boolean method named `Validate()` or `Submit()`, etc.
 
-### Name of Query functions (non Boolean)
+### Name of Query methods (non Boolean)
 
 If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something.
 
@@ -54,7 +54,7 @@ public void SlowlyProcess() { ... }
 
 The last example above starts with an adverb. A better name for it would be `ProcessSlowly()`.
 
-### Name of Command functions
+### Name of Command methods
 
 Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
 
@@ -65,7 +65,7 @@ public async Task UpdateParent(...) { ... }
 public async Task SendToXyz(...) { ... }
 ```
 
-#### What should a command function return?
+#### What should a command method return?
 
 Ideally command methods usually return **`void`** (or **`Task`** , in async programming).
 
@@ -90,34 +90,30 @@ Avoid returning arbitrary values from command methods. For example your `CreateD
 
 The following advice has appeared in one form or another for 30 years or more:
 
-**FUNCTIONS SHOULD DO ONE THING.**
+> Methods should do one thing, do it well, and do it only.
 
-**THEY SHOULD DO IT WELL.**
-
-**THEY SHOULD DO IT ONLY.**
-
-But what is the meaning of *“one thing”*? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
+But what is the meaning of *“one thing”*? Of course a method can often have multiple statements. It can perform boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
 
 It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body.
 
-When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other functions and run steps that are **one level below the stated name of the function**. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction.
+When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other methods and run steps that are **one level below the stated name of the method**. In that case the method is doing one thing. After all, the reason we write methods is to decompose a larger concept (i.e, the name of the method) into a set of steps at the next (lower) level of abstraction.
 
-To know if a function is doing more than “one thing”  try to extract another function from one or a bunch of its statements and give it a sensible name. Then think whether this new function (concept) is:
+To know if a method is doing more than “one thing”  try to extract another method from one or a bunch of its statements and give it a sensible name. Then think whether this new method (concept) is:
 
 - A level of abstraction below the original method; or
 - At the same level as the original one, merely a restatement of its implementation.
 
-**Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
+> **Methods that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
 
-### One Level of Abstraction per Function
+### One Level of Abstraction per Method
 
-In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction.
+In order to make sure our methods are doing “one thing,” we need to make sure that the statements within our methods are all at the same level of abstraction.
 
-Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function.
+Mixing levels of abstraction within a method is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the method.
 
 #### Reading Code from Top to Bottom: The Stepdown Rule
 
-Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule.
+Code should read like a top-down narrative. Every method should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of methods. I call this The Stepdown Rule.
 
 To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. 
 
@@ -129,7 +125,7 @@ To say this differently, we want to be able to read the program as though it wer
 - To do B we…
 - To do C we…
 
-Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
+Learning to think this way is very important. It is the key to keeping methods short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
 
 **Dependent methods:** If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.
 
@@ -151,7 +147,7 @@ Think of a well-written newspaper article. You read it vertically.
 - The name should be simple but explanatory.
 - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
 - The topmost parts of the source file should provide the high-level concepts and algorithms.
-- Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
+- Detail should increase as we move downward, until at the end we find the lowest level methods and details in the source file.
 
 Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
 
@@ -367,7 +363,7 @@ On the other hand, there are cases where adding a preposition can improve readab
 
 ### How many arguments?
 
-The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
+The ideal number of arguments for a method is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
 
 **A large number of arguments in a method is usually a code smell, that something is missing.** 
 
@@ -377,7 +373,7 @@ You might be surprised that sometimes when you do that, you may realise that the
 
 #### Argument Objects
 
-When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
+When a method seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
 
 ```c#
 Circle MakeCircle(double x, double y, double radius);
@@ -391,7 +387,7 @@ Reducing the number of arguments by creating objects out of them may seem like c
 
 #### Params Array Arguments
 
-Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
+Sometimes we want to pass a varying number of arguments into a method. Consider, for example, the String.format method:
 
 ```c#
 string.Format("{0} worked {1:F2} hours.", name, hours);
@@ -425,10 +421,10 @@ If multiple extension methods with the same signature are found (from different 
 
 #### Avoid Side Effects
 
-Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
+Side effects are lies. Your method promises to do one thing, but it also does other hidden things such as making unexpected changes in:
 
 - Fields or properties of its own class.
-- Fields or properties of the parameters passed into the function
+- Fields or properties of the parameters passed into the method
 - Global stuff such as database, user cookies, …
 
 Methods that have side effects can deceive the caller, cause hard to find bugs, and lead to strange couplings and dependencies. Consider the following example.
@@ -450,7 +446,7 @@ public class UserValidator
 }
 ```
 
-The side effect is the call to `Session.initialize()`. The CheckPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the function, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.
+The side effect is the call to `Session.initialize()`. The `CheckPassword` method, by its name, says that it checks the password. The name does not imply that it initializes the session. So a poor caller who believes the name of the method, runs the risk of erasing the existing session data if it is merely trying to check the validity of the user.
 
 That is, `CheckPassword()` can only be called at certain times, when it is safe to initialize the session. If it is called out of order, session data may be inadvertently lost. There is a term for this problem: temporal coupling.
 
@@ -458,13 +454,13 @@ That is, `CheckPassword()` can only be called at certain times, when it is safe 
 
 Temporal coupling occurs when there's an implicit relationship between two, or more, members of a class requiring clients to invoke one member before the other. This tightly couples the members in the temporal dimension.
 
-Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function `CheckPasswordAndInitializeSession`, though that certainly violates the “Do one thing” rule.
+Temporal couplings are confusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the method. In this case we might rename the method `CheckPasswordAndInitializeSession`, though that certainly violates the “Do one thing” rule.
 
 A better option will be to come up with a name that is one level of abstraction higher than the two steps of checking password, and initializing the session. In this example I call that method Login(). Then it will be doing “one thing” at its level of abstraction.
 
 ### You are a storyteller 
 
-When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
+When developing any system, you are designing a language to describe the domain of that project. Methods are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
 
 **The art of programming is, and has always been, the art of language design.**
 
