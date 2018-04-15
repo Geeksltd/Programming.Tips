@@ -16,7 +16,7 @@
 * Architecture
   
 * Methods
-    * [Do one thing](docs/methods/one-thing.md)
+    * [Do one thing](docs/methods/do-one-thing.md)
     * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
     * [The Stepdown Rule](docs/methods/stepdown-rule.md)
     * [Naming method arguments](docs/methods/argument-name.md)
