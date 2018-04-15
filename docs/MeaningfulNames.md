@@ -58,7 +58,7 @@ Noise words are redundant. For example:
 
 ### Use Pronounceable Names
 
-&nbsp;&nbsp; If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. *“Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?”*
+If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. *“Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?”*
 This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms.
 
 ## Class Names
@@ -70,11 +70,11 @@ This matters because programming is a social activity. Instead of made-up words 
 
 ## Method Names
 
-&nbsp;&nbsp; Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
+Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
 
 ### Add Meaningful Context
 
-&nbsp;&nbsp; There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
+There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
 
 Imagine that you have variables named `firstName`, `lastName`, `street`, `houseNumber`, `city`, `state`, and `zipcode`. Taken together it’s pretty clear that they form an address. But what if you just saw the **state** variable being used **alone** in a method? Would you automatically infer that it was part of an address? 
 
@@ -159,7 +159,7 @@ void ThereIsOneLetter()
 
 ### Don’t add unnecessary context
 
-&nbsp;&nbsp; In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD. Always think whether a context is already implied and avoid adding the obvious as it’s just noise.
+In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD. Always think whether a context is already implied and avoid adding the obvious as it’s just noise.
 
 Likewise, if you have a Mailing Address class in GSD’s “accounting” application, if you named it **GSDAccount** Address. Ten of 17 characters are redundant as they are already implied.
 
