@@ -2,7 +2,7 @@
 
 The ideal number of arguments for a method is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
 
-**A large number of arguments in a method is usually a code smell, that something is missing.** 
+> **A large number of arguments in a method is usually a code smell, that something is missing.** 
 
 Often you realise that the grouping of those argument represents an abstraction, a concept, a missing class in your application. Try hard to **come up with a class name that represents that grouping.** If you succeeded, then do create the class and change the original method to take a single instance of that instead of multiple arguments.
 
