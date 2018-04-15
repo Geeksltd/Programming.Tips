@@ -17,7 +17,7 @@
   
 * Methods
     * [Do one thing](docs/methods/do-one-thing.md)
-    * [How many arguments?](docs/methods/argument-name.md)
+    * [How many arguments?](docs/methods/arguments.md)
     * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
     * [The Stepdown Rule](docs/methods/stepdown-rule.md)    
     * [Creating extension methods](docs/methods/extension-methods.md)    
