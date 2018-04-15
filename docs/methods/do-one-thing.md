@@ -1,10 +1,22 @@
 # Methods should do ONE thing
 
+
+## Size matters
+
+Methods should be short and small. I mean really small. How short should they be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
+
+> In fact, you cannot directly aim for a particular size. What you can do, is to aim to break **larger abstractions** into smaller ones. Go for **micro abstractions** and turn each one into a method with a name that represents that abstraction. 
+
+Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code.
+
+
+## What is one thing?!
+
 The following advice has appeared in one form or another for 30 years or more:
 
 > Methods should do one thing, do it well, and do it only.
 
-## What is one thing?!
+
 But what is the meaning of *“one thing”*? Of course a method can often have multiple statements. It can perform boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
 
 It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body. 
