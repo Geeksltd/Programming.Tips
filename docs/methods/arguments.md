@@ -18,11 +18,23 @@ Often you realise that the grouping of those argument represents an abstraction,
 Consider, for example, the difference between the two following declarations:
 
 ```c#
-Circle MakeCircle(double x, double y, double radius);
+Circle MakeCircle(double x, double y, double radius)
+{
+   ...
+}
 ```
 
 ```c# 
-Circle MakeCircle(Point center, double radius);
+Circle MakeCircle(Point center, double radius)
+{
+   ...
+}
+...
+class Point
+{
+    public double X {get; set;}
+    public double Y {get; set;}
+}
 ```
 
 ## Discovering missing abstractions
