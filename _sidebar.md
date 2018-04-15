@@ -11,3 +11,4 @@
     
 * Classes
     * [Smart vs Dumb classes](classes/smart-v-dumb.md)
+    * [Single Responsibility Principle](classes/single-responsibility.md)
