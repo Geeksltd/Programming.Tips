@@ -1,12 +1,12 @@
 # Methods (Functions)
 
 ## Size matters
+
 &nbsp;&nbsp; The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that. How short should a function be? It depends. Ideally methods should be between 1 to 5 lines. But this is of course not always possible.
 
 In fact, you cannot directly aim for a particular size. What you can do, is to aim to break larger abstractions into smaller ones. Go for micro abstractions and turn each one into a method with a name that represents that abstraction. 
 
-Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code. 
-
+Find the smallest piece of logic that you can give a name to. This is an art. Once you master it you will enjoy programming more. And you will feel more proud of your code.
 
 ## Command Query Separation (CQS) Law
 
@@ -14,8 +14,7 @@ Find the smallest piece of logic that you can give a name to. This is an art. On
 
 ### Name of Query functions (Boolean)
 
-&nbsp;&nbsp; Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are: 
-
+&nbsp;&nbsp; Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are:
 
 ```c#
 public bool IsSomething() { ... }
@@ -47,7 +46,6 @@ public string GenerateXyzReport() { ... }
 
 The key point here is that the method name should start with a verb. For example the following examples are poor choices as they don’t start with a verb:
 
-
 ```c#
 public Company Company() { ... }
 public void Transactions() { ... }
@@ -67,16 +65,13 @@ public async Task UpdateParent(...) { ... }
 public async Task SendToXyz(...) { ... }
 ```
 
-**What should a command function return?**
+#### What should a command function return?
 
-
-Ideally command methods usually return **`void`** (or **`Task`** , in async programming). 
-
+Ideally command methods usually return **`void`** (or **`Task`** , in async programming).
 
 Sometimes command methods return a **`Boolean`** value that represents success or failure of the operation. This is normally not a good practice. Instead the method should **throw an exception** in the case of a failure. Though, if you have a  **critical performance situation** where the microseconds overhead added by exceptions is not acceptable, then returning Boolean would be ok.
 
-
-If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named CreateDailyTimesheet() may add a new timesheet record in the database, and immediately return it.
+If the method will create a new object as a result of the command, and it’s clear from the name of the method, then it’s ok to return that. For example a method named `CreateDailyTimesheet()` may add a new *timesheet* record in the database, and immediately return it.
 
 ```c#
 public Timesheet CreateDailyTimesheet(Employee employee)
@@ -89,115 +84,109 @@ public Timesheet CreateDailyTimesheet(Employee employee)
 
 Avoid returning arbitrary values from command methods. For example your `CreateDailyTimesheet()` must not return a decimal value to represent the total hours worked in a month!
 
-
 ## Micro abstractions
-
-
 
 ### Do One Thing
 
-&nbsp;&nbsp; The following advice has appeared in one form or another for 30 years or more.
+The following advice has appeared in one form or another for 30 years or more:
 
+**FUNCTIONS SHOULD DO ONE THING.**
 
-   **FUNCTIONS SHOULD DO ONE THING.
-    THEY SHOULD DO IT WELL.
-    THEY SHOULD DO IT ONLY.**
+**THEY SHOULD DO IT WELL.**
 
+**THEY SHOULD DO IT ONLY.**
 
-But what is the meaning of “one thing”? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
+But what is the meaning of *“one thing”*? Of course a method can often have multiple statements. It can perform Boolean logic, call other methods or do string or arithmetic calculations. Does that mean it’s doing one thing or multiple things?
 
 It’s not about the number of statements or logic but rather the level of abstraction of each piece of the method’s body.
 
 When we say a method should do one thing, what it really means is that it should do **one thing in one level of abstraction**. As part of the method body it can invoke other functions and run steps that are **one level below the stated name of the function**. In that case the function is doing one thing. After all, the reason we write functions is to decompose a larger concept (i.e, the name of the function) into a set of steps at the next (lower) level of abstraction.
 
 To know if a function is doing more than “one thing”  try to extract another function from one or a bunch of its statements and give it a sensible name. Then think whether this new function (concept) is:
-   - A level of abstraction below the original method; or
-   - At the same level as the original one, merely a restatement of its implementation.
+
+- A level of abstraction below the original method; or
+- At the same level as the original one, merely a restatement of its implementation.
 
 **Functions that do one thing cannot be reasonably divided into sections. They don’t need #Region blocks or headline comments to divide the implementation into sections.**
 
-
 ### One Level of Abstraction per Function
 
-&nbsp;&nbsp; In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction.
+In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction.
 
 Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Worse, once details are mixed with essential concepts, more and more details tend to accrete within the function.
 
 #### Reading Code from Top to Bottom: The Stepdown Rule
-&nbsp;&nbsp; Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule. 
 
+&nbsp;&nbsp; Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule.
 
 To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. 
 
-   - To do A we do B and then C. 
-   - To do B, if E we do F and otherwise we do G
-   - To determine if E, we …
-   - To do F we … 
-   - To do G we... 
-   - To do B we…
-   - To do C we… 
+- To do A we do B and then C.
+- To do B, if E we do F and otherwise we do G
+- To determine if E, we …
+- To do F we …
+- To do G we...
+- To do B we…
+- To do C we…
 
 Learning to think this way is very important. It is the key to keeping functions short and making sure they do “one thing.” Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
 
-
 **Dependent methods:** If one method calls another, they should be vertically close in the source file, and the caller should be above the callee where possible. This gives the program a natural flow and enhances the readability of the whole module.
-
 
 #### The Newspaper Metaphor
 
-&nbsp;&nbsp; Think of a well-written newspaper article. You read it vertically.
+Think of a well-written newspaper article. You read it vertically.
 
-   - At the top you see a headline that will:
-      - tell you what the story is about
-      - allow you to decide if you want to read it.
-   
-   - The first paragraph gives you a synopsis of the whole story which:
-      -  Hides all the details
-      - Gives you the broad-brush concepts.
-   - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia. </li>
+- At the top you see a headline that will:
+    - tell you what the story is about
+    - allow you to decide if you want to read it.
+
+- The first paragraph gives you a synopsis of the whole story which:
+    -  Hides all the details
+    - Gives you the broad-brush concepts.
+    - As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia.
 
 **We would like a source file to be like a newspaper article:**
 
-   - The name should be simple but explanatory.
-   - The name, by itself, should be sufficient to tell us whether we are in the right module or not.
-   - The topmost parts of the source file should provide the high-level concepts and algorithms.
-   - Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.     
-   
-Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
+- The name should be simple but explanatory.
+- The name, by itself, should be sufficient to tell us whether we are in the right module or not.
+- The topmost parts of the source file should provide the high-level concepts and algorithms.
+- Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
 
+Would you read a newspaper that is just one long story containing a disorganized agglomeration of facts, dates, and names? A newspaper is composed of many articles, and most are very small. Very rarely articles are a full page long. This makes the newspaper usable.
 
 ### Switch Statements vs Polymorphism
 
-&nbsp;&nbsp; It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:
+It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately, we can’t always avoid switch statements. Imagine the following example in an Employee class:
 
 ```c#
 public decimal CalculatePay()
 {     
-     switch (this.EmployeeType) 
+     switch (this.EmployeeType)
      {       
               case COMMISSIONED:
-                   return CalculateCommissionedPay();      
+                   return CalculateCommissionedPay();
               case HOURLY:
-                  return CalculateHourlyPay();     
+                  return CalculateHourlyPay();
               case SALARIED:
-                  return CalculateSalariedPay();      
+                  return CalculateSalariedPay();
               default:
                  throw new NotSupportedException();
     }
 }
 ```
-Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable. 
+
+Basically it is saying that depending on the type of the employee, run a different logic. Now if in your application this was the only thing that depends on the employee type, this code is acceptable.
 
 However, if you find that a switch statement on an employee’s type is being repeated, for example for:
 
-   - `IsPayday(Date date)`
-   - `DeliverPay(decimal pay)`
-   - ...
+- `IsPayday(Date date)`
+- `DeliverPay(decimal pay)`
+- ...
 
-Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead. 
+Then it’s a smell that something is missing. When you find yourself **repeating switch statements on a particular type of value**, you should change that to use polymorphism instead.
 
-In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the `CalculatePay()`, `IsPayday()`, and `DeliverPay()` methods as abstract (without implementation). And each of the child classes, ie `CommissionedEmployee`, `HourlyEmployee` and `SalariedEmployee` will implement it. 
-
+In the above example you will need to create a specialist employee class per employee type, that inherits from an abstract employee. The base Employee class will define the `CalculatePay()`, `IsPayday()`, and `DeliverPay()` methods as abstract (without implementation). And each of the child classes, ie `CommissionedEmployee`, `HourlyEmployee` and `SalariedEmployee` will implement it.
 
 ### Naming method arguments
 
@@ -207,7 +196,7 @@ To see if an argument name is a good one, you should be able to make a statement
 
    _**In the context of {method name}, this {argument type} is
      the {argument name}.**_
-     
+
 Consider the following example from a chat application:
 
 ```c#
@@ -221,15 +210,13 @@ class ChatSession
 }
 ```
 
-The statement sentence would be: “In the context of SendMessage, this user instance is the user.”
+The statement sentence would be: *“In the context of SendMessage, this user instance is the user.”*
 
-If you heard that, you’d be immediately asking “what do you mean by user? The user who sends, or the one who receives the message?”. 
+If you heard that, you’d be immediately asking *“what do you mean by user? The user who sends, or the one who receives the message?”*.
 
+The user argument here is named after its type, which is a very common thing among programmers. However, *“user”* is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument.
 
-The user argument here is named after its type, which is a very common thing among programmers. However, “user” is not a role in this context. If the argument was named sender or receiver, then it would be a clear role, or purpose for that argument. 
-
-
-Consider another example: 
+Consider another example:
 
 ```c#
 class TradingService
@@ -239,10 +226,10 @@ class TradingService
     {
        ...
     }
-}  
+}
 ```
 
-In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.” 
+In this example, the last argument, product, seems to be named after its type. However, its role in that context can also be called a “product” as the following statement makes clear sense: “In the context of ExecuteTransaction, this Product instance is the product.”
 
 
 But can you say the same thing for company1 and company2? Of course not. Those names do not clarify the role of these arguments in that method. A better name would be **buyer** and **seller**.
