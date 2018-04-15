@@ -8,3 +8,6 @@
     * [ExceptionHandling](docs/ExceptionHandling.md)
     * [CodeComments](docs/CodeComments.md)
     * [Classes](docs/Classes.md)
+    
+* Classes
+    * [Smart vs Dumb classes](classes/smart-v-dumb.md)
