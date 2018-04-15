@@ -1,16 +1,20 @@
-### Naming instance methods
+# Naming instance methods
 
-You previously learnt that a method’s name should start with a verb, and that it should be clear and unambiguous. So what should go after the verb?
+A method's name should:
+- Clarify the intent
+- Be unambiguous
 
-To name a method that takes arguments, the verb can optionally be followed by a preposition, and then a noun per argument.
+And it should be based on the following formula:
 
-**Method name = Verb + {[Preposition] + Noun} per argument**
+> Verb + [{[Preposition] + Noun}] per argument
 
-But how should you decide on the “optionally” part?
+In simple words, a method name starts with a verb. Then if it takes arguments, for each argument, you *can optionally* add a noun to represent that argument, which *optionally* can be prefixed with a preposition.
 
-#### Case study: Shopping basket
+To see how it works, let's look at an example.
 
-Let’s look at an example. Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it.
+## Case study: Shopping basket
+
+Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it.
 
 ```c#
 class ShoppingBasket
@@ -34,13 +38,13 @@ What method name would be best? Let’s try a few different choices, from the po
 
 Let’s immediately rule out the last option. Although it is the most clear and descriptive option, but it also is verbose and ignores the fact that there is a context that mustn’t be repeated unnecessarily. The “ToBeCheckedOut” part is redundant. Not only is it already implied anyway, but also it’s irrelevant to the method’s responsibility.
 
-#### The instance context
+## The instance context
 
 The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the **“ToBasket”** part is is redundant.
 
 As a rule of thumb, your instance methods should almost never add the defining class’s name to the end of the method.
 
-#### Arguments in the method name
+## Arguments in the method name
 
 So far we have ruled out some of the name options of this method, and are left with:
 
@@ -50,7 +54,7 @@ So far we have ruled out some of the name options of this method, and are left w
 
 So let’s go back to the “optionally” part mentioned at the beginning of this section in relation to adding the argument names to the method name.
 
-**When you must include….**
+### When you must include….
 
 There are cases where you must add the argument name to the method name, and that’s when there is an ambiguity to be resolved.
 
@@ -58,13 +62,13 @@ In this example, what if you had another method that added a percentage of the w
 
 If you didn’t have an ambiguity though, it will be optional to add the name on.
 
-**When it is optional**
+### When it is optional
 
 In this example there appears to be no ambiguity about the method, so all 3 options would work. However, for cleanness and brevity, it’s generally preferred to omit the argument names which are deemed obvious and which add no real further clarity to the method’s purpose. 
 
 I would argue that simply **`Add()`** is a perfect name in this case.
 
-#### When there is ambiguity
+## When there is ambiguity
 
 Now consider the following example. Let’s say in an issue tracking system, we have a WorkItem class which needs  a method to update the estimation time for the work item:
 
@@ -97,7 +101,7 @@ Which option would be the best name?
 
 The right choice between the second and the third item depends on  **whether in the domain of the project there is any ambiguity.** If in that application the only estimation being recorded is that of the developer, then the best name will be simply `UpdateEstimation()` in order to avoid stating the Obvious.
 
-#### Preposition: Further clarify the argument’s role
+## Preposition: Further clarify the argument’s role
 
 When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method.
 
