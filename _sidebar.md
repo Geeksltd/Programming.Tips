@@ -24,6 +24,7 @@
     
 * Naming
     * [What to avoid](docs/naming/avoid.md)
+    * [Naming classes](docs/naming/class.md)    
     * [Method naming formula](docs/naming/method-name-formula.md)
     * [Command/Query Seperation](docs/naming/method-cqs.md)
     * [Naming method arguments](docs/naming/argument-name.md)
