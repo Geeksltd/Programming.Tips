@@ -6,8 +6,7 @@
     * [SystemArchitecture](docs/SystemArchitecture.md)
     * [MeaningfulNames](docs/MeaningfulNames.md)
     * [ExceptionHandling](docs/ExceptionHandling.md)
-    * [CodeComments](docs/CodeComments.md)
-    * [Classes](docs/Classes.md)
+    * [CodeComments](docs/CodeComments.md)    
     
 * Classes
     * [Different nature of classes](classes/nature.md)
