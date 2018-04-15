@@ -23,7 +23,7 @@
     * [Avoid side-effects](docs/methods/side-effects.md)
     
 * Naming
-    * [What to avoid](docs/namig/avoid.md)
+    * [What to avoid](docs/naming/avoid.md)
     * [Method naming formula](docs/naming/method-name-formula.md)
     * [Command/Query Seperation](docs/naming/method-cqs.md)
     * [Naming method arguments](docs/naming/argument-name.md)
