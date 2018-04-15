@@ -1,7 +1,6 @@
 * Introduction
 
-    * [Introduction](docs/Intro.md)
-    * [Methods](docs/Methods.md)
+    * [Introduction](docs/Intro.md)    
     * [SystemArchitecture](docs/SystemArchitecture.md)
     * [MeaningfulNames](docs/MeaningfulNames.md)
     * [ExceptionHandling](docs/ExceptionHandling.md)
@@ -17,10 +16,11 @@
   
 * Methods
     * [Do one thing](docs/methods/do-one-thing.md)
-    * [How many arguments?](docs/methods/arguments.md)
-    * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
+    * [How many arguments?](docs/methods/arguments.md)    
     * [The Stepdown Rule](docs/methods/stepdown-rule.md)    
-    * [Creating extension methods](docs/methods/extension-methods.md)    
+    * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
+    * [Creating extension methods](docs/methods/extension-methods.md)
+    * [Avoid side-effects](docs/methods/side-effects.md)
     
 
 * Naming
