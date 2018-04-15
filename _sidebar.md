@@ -22,7 +22,6 @@
     * [Creating extension methods](docs/methods/extension-methods.md)
     * [Avoid side-effects](docs/methods/side-effects.md)
     
-
 * Naming
     * [Method naming formula](docs/naming/method-name-formula.md)
     * [Command/Query Seperation](docs/naming/method-cqs.md)
