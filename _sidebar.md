@@ -17,12 +17,13 @@
   
 * Methods
     * [Do one thing](docs/methods/do-one-thing.md)
+    * [How many arguments?](docs/methods/argument-name.md)
     * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
-    * [The Stepdown Rule](docs/methods/stepdown-rule.md)
-    * [Naming method arguments](docs/methods/argument-name.md)
+    * [The Stepdown Rule](docs/methods/stepdown-rule.md)    
     * [Creating extension methods](docs/methods/extension-methods.md)    
+    
 
 * Naming
     * [Method naming formula](docs/naming/method-name-formula.md)
     * [Command/Query Seperation](docs/naming/method-cqs.md)
-    
+    * [Naming method arguments](docs/naming/argument-name.md)    
