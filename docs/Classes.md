@@ -2,19 +2,19 @@
 
 ## Different nature of classes
 
-&nbsp;&nbsp; Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
+Typical programming courses teach you what classes are and how to use them in general. On the other hand, programming standards and best practices often prescribe guidelines as if they are universal rules that apply to every class. But they may not always feel right (for a good reason, explained later).
 
 Classes can be categorized differently depending on our perspective. Here we offer a few examples of categories of classes. It’s not an exact science, and the distinction is not 100% clear. But thinking in these terms help us organize our thoughts and make better sense of the programming best practices. Moreover, related tips at the end of each part will help us come up with better design and architecture.
 
 ### Entity classes
 
-&nbsp;&nbsp; One of the early activities in enterprise application projects is a process called data modeling. During that process business concepts, data elements and relationship between them are defined, and such data elements are referred to as Entities. Also, Entities, often are objects that have an identity  that stays unchanged over time (e.g. a `GUID` property named ID).
+One of the early activities in enterprise application projects is a process called data modeling. During that process business concepts, data elements and relationship between them are defined, and such data elements are referred to as Entities. Also, Entities, often are objects that have an identity  that stays unchanged over time (e.g. a `GUID` property named ID).
 
 Typically Entity classes are real objects and encapsulate data and behavior. As they are indeed abstractions of real world concepts, the programming best practices fully apply to entity classes.
 
 ### DTO classes (Data Transfer Objects)
 
-&nbsp;&nbsp; A Data Transfer Object is an object that is used to encapsulate data, and send it from one subsystem of an application to another. DTO classes typically have data fields and properties, but no methods or events. They are dumb classes.
+A Data Transfer Object is an object that is used to encapsulate data, and send it from one subsystem of an application to another. DTO classes typically have data fields and properties, but no methods or events. They are dumb classes.
 
 A common use case for DTOs is to create ViewModel classes in ASP.NET Mvc applications. As the name suggests, a ViewModel is the model for the view. Every view (e.g. a cshtml file) needs data to render itself,  which it receives from the Controller that received the http request in the first place.
 
@@ -71,7 +71,7 @@ _An abstraction in which a software that provides generic functionality can be s
 
 ### Example: ASP.NET Controllers
 
-&nbsp;&nbsp; ASP.NET Mvc is a framework. If you just create a random class somewhere in an ASP.NET application, the framework will have no idea what it is or how to use it. Instead, you must implement very specific classes in very specific ways.
+ASP.NET Mvc is a framework. If you just create a random class somewhere in an ASP.NET application, the framework will have no idea what it is or how to use it. Instead, you must implement very specific classes in very specific ways.
 
 For example ASP.NET recognizes a concept named Controller. For your application to benefit from that concept, you should create classes that inherit from a special class in the framework called System.Web.Mvc.Controller. In other words you create a Controller Class in your project.
 
@@ -204,7 +204,7 @@ But when cohesion is low, and you have unconnected islands, it’s as if you are
 
 ### Breaking large methods via Cohesion
 
-&nbsp;&nbsp; Imagine the following scenario:
+Imagine the following scenario:
 
 - You have a large method with many variables and lots of code.
 - You want to extract one small part of that method into a separate method.
