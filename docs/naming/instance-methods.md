@@ -1,8 +1,10 @@
 # Naming instance methods
 
-A method's name should:
+A method's name should follow 3 main rules:
+
 - Clarify the intent
-- Be unambiguous
+- Be as short as possible
+- Be as long as needed to be unambiguous
 
 And it should be based on the following formula:
 
