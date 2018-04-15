@@ -1,7 +1,7 @@
 
 # Meaningful Names
 
-Names are everywhere in software. We name our variables, functions, arguments, classes, and packages. We name our source files and the directories that contain them.
+&nbsp;&nbsp; Names are everywhere in software. We name our variables, functions, arguments, classes, and packages. We name our source files and the directories that contain them.
 
 Naming is not just coming up with identifiers for things. Naming is about how we think. Naming is how we see the problem domain, and how we think about the solution. Naming is about design. It’s about creativity. It’s an art, and a science.
 
@@ -11,7 +11,7 @@ Choosing good names takes time but saves more than it takes. So take care with y
 
 ## Use Intention-Revealing Names
 
-Names should reveal intent. The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used.
+&nbsp;&nbsp; Names should reveal intent. The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used.
 
 **If a name requires a comment, then the name does not reveal its intent:**
 
@@ -30,7 +30,7 @@ Choosing names that reveal intent make it easier to understand and change code.
 
 ### Avoid Disinformation
 
-Avoid leaving false clues that obscure the meaning of code. Of course you’d think “what?! Why do you think I would do that?”. But it’s easy to make that mistake depending on your focus and state of mind in that moment.
+&nbsp;&nbsp; Avoid leaving false clues that obscure the meaning of code. Of course you’d think “what?! Why do you think I would do that?”. But it’s easy to make that mistake depending on your focus and state of mind in that moment.
 When coming up with a name, step back for a second and play devil’s advocate. Think:
 
 > How else can this name be interpreted?!
@@ -39,7 +39,7 @@ For a moment forget about how much it makes sense to you right now. Put yourself
 
 ### Be considerate of human eyes
 
-Avoid using names which vary only in small ways. How long does it take to spot the difference between:
+&nbsp;&nbsp; Avoid using names which vary only in small ways. How long does it take to spot the difference between:
 
     * XYZControllerForEfficientHandlingOfStrings
     * XYZControllerForEfficientStorageOfStrings?
@@ -49,7 +49,7 @@ In particular, when using code completion in Visual Studio you can type in a few
 
 ### Avoid noise words 
 
-Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different. Info and Data parts are pointless here. The same goes for a, an and the prefixes for variables: they are unnecessary.
+&nbsp;&nbsp; Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different. Info and Data parts are pointless here. The same goes for a, an and the prefixes for variables: they are unnecessary.
 Noise words are redundant. For example:
 
    * The word **table** should never appear in a table name. 
@@ -59,7 +59,7 @@ Noise words are redundant. For example:
 
 ### Use Pronounceable Names
 
-If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. “Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?”
+&nbsp;&nbsp; If you can’t pronounce a variable, you can’t discuss it without sounding like an idiot. “Well, over here on the bee cee arr three cee enn tee we have a pee ess zee kyew int, see?”
 This matters because programming is a social activity. Instead of made-up words or abbreviations, use proper English terms.
 
 ## Class Names
@@ -70,10 +70,10 @@ This matters because programming is a social activity. Instead of made-up words 
    - Also avoid words that are too broad like `Manager`, `Processor`, `Data`, or `Info` in the name of a class.
 
 ## Method Names
-Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
+&nbsp;&nbsp; Methods should have verb or verb phrase names like `Save`, `PostPayment`, `DeletePage`, `IsXyz`, `CanXyz`, `HasXyz`. You will learn more details later. For casting in particular, you can use `ToXyz` or `AsXyz`.
 
 ### Add Meaningful Context
-There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
+&nbsp;&nbsp; There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
 
 Imagine that you have variables named `firstName`, `lastName`, `street`, `houseNumber`, `city`, `state`, and `zipcode`. Taken together it’s pretty clear that they form an address. But what if you just saw the **state** variable being used **alone** in a method? Would you automatically infer that it was part of an address? 
 
@@ -161,7 +161,7 @@ void ThereIsOneLetter()
 
 ### Don’t add unnecessary context
 
-In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD. Always think whether a context is already implied and avoid adding the obvious as it’s just noise.
+&nbsp;&nbsp; In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD. Always think whether a context is already implied and avoid adding the obvious as it’s just noise.
 
 Likewise, if you have a Mailing Address class in GSD’s “accounting” application, if you named it **GSDAccount** Address. Ten of 17 characters are redundant as they are already implied.
 
