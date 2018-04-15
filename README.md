@@ -2,7 +2,7 @@
 
 Articles for programming best-practices at Geeks Ltd.
 
-> [Read this with a better format](https://geeksltd.github.io/Programming.Tips/#/)
+> [Read this in a better format](https://geeksltd.github.io/Programming.Tips/#/)
 
 ## Background
 
