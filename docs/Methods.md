@@ -14,7 +14,7 @@ Functions should either do something or answer something, but not both. Either y
 
 ### Name of Query functions (Boolean)
 
-&nbsp;&nbsp; Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are:
+Question methods, that return a Boolean result, must be named as a fact. Good fact-like names are:
 
 ```c#
 public bool IsSomething() { ... }
@@ -30,7 +30,7 @@ Avoid command-like verbs for these. For instance avoid a Boolean method named `V
 
 ### Name of Query functions (non Boolean)
 
-&nbsp;&nbsp; If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something.
+If the method returns anything other than Boolean, and it has no side effect, its name should start with verbs that imply a process that results in something.
 
 ```c#
 public SomeType GetSomething() { ... }
@@ -56,7 +56,7 @@ The last example above starts with an adverb. A better name for it would be `Pro
 
 ### Name of Command functions
 
-&nbsp;&nbsp; Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
+Some methods are meant to change the state of the parent object or the outside world, such as in the database or file system. Those methods should be named with command verbs as opposed to query verbs. Good examples would be:
 
 ```c#
 public void Archive()  { ... }
@@ -117,7 +117,7 @@ Mixing levels of abstraction within a function is always confusing. Readers may 
 
 #### Reading Code from Top to Bottom: The Stepdown Rule
 
-&nbsp;&nbsp; Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule.
+Code should read like a top-down narrative. Every function should be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. I call this The Stepdown Rule.
 
 To say this differently, we want to be able to read the program as though it were a set of “To” paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down. 
 
@@ -190,7 +190,7 @@ In the above example you will need to create a specialist employee class per emp
 
 ### Naming method arguments
 
-&nbsp;&nbsp; Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after.
+Of course you wouldn’t send a random argument to a method for no reason. Arguments are passed to methods because they are needed. The method that receives an object in, will either query it for information, or it operates on it. But regardless, the argument is there with a purpose, it has a role to play in that context. That role is what the argument should be named after.
 
 To see if an argument name is a good one, you should be able to make a statement as below, and it should make sense with no ambiguity:
 
@@ -250,7 +250,7 @@ If, instead, you named it after its **true role** in that context, which would b
 
 ### Naming instance methods
 
-&nbsp;&nbsp; You previously learnt that a method’s name should start with a verb, and that it should be clear and unambiguous. So what should go after the verb?
+You previously learnt that a method’s name should start with a verb, and that it should be clear and unambiguous. So what should go after the verb?
 
 To name a method that takes arguments, the verb can optionally be followed by a preposition, and then a noun per argument.
 
@@ -260,7 +260,7 @@ But how should you decide on the “optionally” part?
 
 #### Case study: Shopping basket
 
-&nbsp;&nbsp; Let’s look at an example. Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it.
+Let’s look at an example. Let’s say you have a ShoppingBasket class where you want to define a method to add a product to it.
 
 ```c#
 class ShoppingBasket
@@ -286,13 +286,13 @@ Let’s immediately rule out the last option. Although it is the most clear and 
 
 #### The instance context
 
-&nbsp;&nbsp; The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the **“ToBasket”** part is is redundant.
+The context of an instance method (non-static) always implicitly contains the declaring class. For example, every instance method defined in the ShoppingBasket class, always has the Shopping Basket as a given. Therefore, the **“ToBasket”** part is is redundant.
 
 As a rule of thumb, your instance methods should almost never add the defining class’s name to the end of the method.
 
 #### Arguments in the method name
 
-&nbsp;&nbsp; So far we have ruled out some of the name options of this method, and are left with:
+So far we have ruled out some of the name options of this method, and are left with:
 
   - `myBasket.Add(product, 3)`
   - `myBasket.AddProduct(product, 3)`
@@ -316,7 +316,7 @@ I would argue that simply **`Add()`** is a perfect name in this case.
 
 #### When there is ambiguity
 
-&nbsp;&nbsp; Now consider the following example. Let’s say in an issue tracking system, we have a WorkItem class which needs  a method to update the estimation time for the work item:
+Now consider the following example. Let’s say in an issue tracking system, we have a WorkItem class which needs  a method to update the estimation time for the work item:
 
 ```c#
 class WorkItem
@@ -349,7 +349,7 @@ The right choice between the second and the third item depends on  **whether in 
 
 #### Preposition: Further clarify the argument’s role
 
-&nbsp;&nbsp; When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method.
+When passing an argument to a method, if you think about its role in that context, usually there will be a preposition that applies to the argument in the context of that method.
 
 In the above example, you could use the “To” preposition and add it to the method name:
 
@@ -367,7 +367,7 @@ On the other hand, there are cases where adding a preposition can improve readab
 
 ### How many arguments?
 
-&nbsp;&nbsp; The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
+The ideal number of arguments for a function is zero. Next comes one, followed closely by two. Three arguments should be avoided where possible. More than three requires very special justification—and then shouldn’t be used anyway.
 
 **A large number of arguments in a method is usually a code smell, that something is missing.** 
 
@@ -377,7 +377,7 @@ You might be surprised that sometimes when you do that, you may realise that the
 
 #### Argument Objects
 
-&nbsp;&nbsp; When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
+When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
 
 ```c#
 Circle MakeCircle(double x, double y, double radius);
@@ -391,7 +391,7 @@ Reducing the number of arguments by creating objects out of them may seem like c
 
 #### Params Array Arguments
 
-&nbsp;&nbsp; Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
+Sometimes we want to pass a varying number of arguments into a function. Consider, for example, the String.format method:
 
 ```c#
 string.Format("{0} worked {1:F2} hours.", name, hours);
@@ -401,11 +401,11 @@ If the variable arguments are all treated identically, as they are in the exampl
 
 ### Creating Extension methods
 
-&nbsp;&nbsp; C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class.
+C# allows you to define extension methods to existing classes when you don’t own their source code. For example you can add new methods to the existing System.String class.
 
 #### Enum methods
 
-&nbsp;&nbsp; Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
+Extension methods can be used to add methods to Enumerate types. This can sometimes make your code more readable and object-oriented like.
 
 #### General applicability
 
@@ -419,13 +419,13 @@ Do not create an extension method for a class that you own. Favour normal instan
 
 #### Extension method resolution
 
-&nbsp;&nbsp; For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method.
+For an extension method to be usable, the consumer code should declare a using statement for the namespace of the class which declares the extension method.
 
 If multiple extension methods with the same signature are found (from different extension method classes) you will get a compile error. But if one of them is in the same namespace as the consumer code, that will be selected.
 
 #### Avoid Side Effects
 
-&nbsp;&nbsp; Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
+Side effects are lies. Your function promises to do one thing, but it also does other hidden things such as making unexpected changes in:
 
 - Fields or properties of its own class.
 - Fields or properties of the parameters passed into the function
@@ -464,7 +464,7 @@ A better option will be to come up with a name that is one level of abstraction 
 
 ### You are a storyteller 
 
-&nbsp;&nbsp; When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
+When developing any system, you are designing a language to describe the domain of that project. Functions are the verbs of that language, and classes are the nouns. Together, they are a Domain-Specific-Language.
 
 **The art of programming is, and has always been, the art of language design.**
 
