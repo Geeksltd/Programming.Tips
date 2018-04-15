@@ -18,3 +18,4 @@
 * Methods
     * [Do one thing](docs/methods/one-thing.md)
     * [Switch Statements vs Polymorphism](docs/methods/switch-polymorphism.md)
+    * [The Stepdown Rule](docs/methods/stepdown-rule.md)
