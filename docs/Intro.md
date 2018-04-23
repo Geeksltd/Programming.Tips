@@ -28,6 +28,4 @@ In the end, you wind up with functions that follow the rules laid down in this g
 
 ## Note: GCop and Tidy C# 
 
-This book does not include tips which are covered automatically via Tidy C# and GCop. There are many important elements in those tools and so you must ensure to install and use them in your applications.
-
-This book mainly covers concepts which are not automatically enforced or implemented using those tools, and which you need to consider and apply.
+This guide does not include tips which are covered automatically via Tidy C# and GCop. There are many important elements in those tools and so you must ensure to install and use them in your applications. This guide mainly covers concepts which are not automatically enforced or implemented using those tools, and which you need to consider and apply.
